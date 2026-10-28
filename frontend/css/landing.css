@@ -1,0 +1,289 @@
+/* ============================================
+   EasyTravels — Landing Page Styles
+   ============================================ */
+
+.landing-hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.landing-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.landing-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 22, 40, 0.7) 0%,
+    rgba(10, 22, 40, 0.4) 50%,
+    rgba(10, 22, 40, 0.85) 100%
+  );
+  z-index: 1;
+}
+
+.landing-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 var(--space-6);
+}
+
+.landing-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-6);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  color: var(--accent-300);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  margin-bottom: var(--space-8);
+  animation: fadeInDown 0.8s ease forwards;
+}
+
+.landing-badge i {
+  animation: pulse 2s infinite;
+}
+
+.landing-title {
+  font-size: var(--font-size-7xl);
+  font-weight: 900;
+  color: white;
+  line-height: 1.05;
+  margin-bottom: var(--space-6);
+  animation: fadeInUp 0.8s ease 0.2s both;
+  letter-spacing: -1px;
+}
+
+.landing-title .word-accent {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary-300) 0%, var(--accent-300) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.landing-subtitle {
+  font-size: var(--font-size-xl);
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 600px;
+  margin: 0 auto var(--space-10);
+  line-height: 1.7;
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.landing-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  animation: fadeInUp 0.8s ease 0.6s both;
+}
+
+.landing-explore-btn {
+  padding: var(--space-4) var(--space-10);
+  font-size: var(--font-size-lg);
+  background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+  color: white;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  box-shadow: 0 8px 30px rgba(15, 155, 142, 0.4);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.landing-explore-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.landing-explore-btn:hover::before {
+  left: 100%;
+}
+
+.landing-explore-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(15, 155, 142, 0.5);
+}
+
+.landing-video-btn {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--font-size-lg);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  transition: all var(--transition-base);
+}
+
+.landing-video-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.landing-video-btn i {
+  font-size: var(--font-size-2xl);
+}
+
+/* Featured Cards at bottom */
+.landing-features {
+  position: absolute;
+  bottom: var(--space-10);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: var(--space-5);
+  animation: fadeInUp 0.8s ease 0.8s both;
+  width: 100%;
+  max-width: var(--container-max);
+  padding: 0 var(--space-6);
+}
+
+.landing-feature-card {
+  flex: 1;
+  padding: var(--space-6);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  transition: all var(--transition-base);
+}
+
+.landing-feature-card:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-4px);
+}
+
+.landing-feature-icon {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  color: white;
+}
+
+.landing-feature-card:nth-child(2) .landing-feature-icon {
+  background: linear-gradient(135deg, var(--accent-400), var(--accent-600));
+}
+
+.landing-feature-card:nth-child(3) .landing-feature-icon {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.landing-feature-card h4 {
+  font-size: var(--font-size-base);
+  color: white;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.landing-feature-card p {
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Particles */
+.landing-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-full);
+  animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .landing-title {
+    font-size: var(--font-size-5xl);
+  }
+
+  .landing-subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .landing-cta-group {
+    flex-direction: column;
+  }
+
+  .landing-features {
+    flex-direction: column;
+    bottom: var(--space-4);
+    gap: var(--space-3);
+  }
+
+  .landing-feature-card {
+    padding: var(--space-4);
+  }
+}

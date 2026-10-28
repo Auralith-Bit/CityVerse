@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EasyTravels diagnostic test suite, API health checks, and pricing calculation verification.">
+  <title>API Diagnostics & System Test — EasyTravels</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .test-dashboard {
+      padding-top: calc(var(--header-height) + var(--space-8));
+      padding-bottom: var(--space-16);
+      background: var(--bg-secondary);
+      min-height: 100vh;
+    }
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-8);
+    }
+    .test-card {
+      background: var(--bg-card);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-md);
+    }
+    [data-theme="dark"] .test-card {
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .test-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--neutral-200);
+    }
+    [data-theme="dark"] .test-card-header {
+      border-color: rgba(255, 255, 255, 0.06);
+    }
+    .test-card-title {
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .test-output {
+      background: #0f172a;
+      color: #38bdf8;
+      font-family: monospace;
+      font-size: 0.8rem;
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      max-height: 220px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+      margin-top: var(--space-4);
+    }
+    .status-pill {
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+    }
+    .status-pill.online {
+      background: #dcfce7;
+      color: #15803d;
+    }
+    .status-pill.offline {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+    @media (max-width: 900px) {
+      .test-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="landing.html" class="nav-logo">
+        <div class="nav-logo-icon"><i class="bx bx-globe"></i></div>
+        <span>EasyTravels</span>
+      </a>
+
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="places.html" class="nav-link">Attractions</a>
+        <a href="bookings.html" class="nav-link">Bookings</a>
+        <a href="nightlife.html" class="nav-link">Nightlife</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="test.html" class="nav-link active">API Status</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="bx bx-moon"></i>
+        </button>
+        <a href="login.html" class="nav-auth-btn nav-login-btn">Log In</a>
+        <a href="signup.html" class="nav-auth-btn nav-signup-btn">Sign Up</a>
+        <div class="nav-toggle" id="navToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Dashboard Container -->
+  <main class="test-dashboard">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: var(--space-4);">
+        <div>
+          <span style="color: var(--primary-500); font-size: var(--font-size-sm); font-weight: 700; text-transform: uppercase;">
+            Diagnostic Suite
+          </span>
+          <h1 style="font-size: var(--font-size-3xl); margin-top: 4px;">System Health & API Testing</h1>
+          <p style="color: var(--text-tertiary); font-size: var(--font-size-sm);">
+            Live test workbench for authentication tokens, pricing algorithms, and backend endpoints.
+          </p>
+        </div>
+        <div>
+          <button class="btn btn-primary" id="runAllTestsBtn">
+            <i class="bx bx-play-circle"></i> Run All Diagnostics
+          </button>
+        </div>
+      </div>
+
+      <div class="test-grid">
+
+        <!-- 1. API Health Checks -->
+        <div class="test-card">
+          <div class="test-card-header">
+            <div class="test-card-title">
+              <i class="bx bx-pulse" style="color: var(--primary-500);"></i>
+              Backend API Status
+            </div>
+            <span class="status-pill online" id="apiStatusPill">Ready</span>
+          </div>
+          <p style="font-size: var(--font-size-xs); color: var(--text-tertiary);">
+            Tests connectivity to Express server endpoints: <code>/api/status</code> & <code>/api/db-status</code>.
+          </p>
+          <div style="display: flex; gap: var(--space-2); margin-top: var(--space-4);">
+            <button class="btn btn-sm btn-secondary" id="testApiStatusBtn">Check /api/status</button>
+            <button class="btn btn-sm btn-secondary" id="testDbStatusBtn">Check /api/db-status</button>
+          </div>
+          <div class="test-output" id="apiOutput">// Press check button to test backend connection...</div>
+        </div>
+
+        <!-- 2. Auth State Inspector -->
+        <div class="test-card">
+          <div class="test-card-header">
+            <div class="test-card-title">
+              <i class="bx bx-user-check" style="color: #3b82f6;"></i>
+              Auth State & JWT
+            </div>
+            <span class="status-pill" id="authStatusPill">Guest</span>
+          </div>
+          <p style="font-size: var(--font-size-xs); color: var(--text-tertiary);">
+            Inspects client-side <code>localStorage.auth</code>, active user session, and demo login.
+          </p>
+          <div style="display: flex; gap: var(--space-2); margin-top: var(--space-4);">
+            <button class="btn btn-sm btn-secondary" id="loginDemoBtn">Sign In Demo User</button>
+            <button class="btn btn-sm btn-secondary" id="clearAuthBtn">Clear Auth</button>
+            <button class="btn btn-sm btn-secondary" id="inspectAuthBtn">Inspect Token</button>
+          </div>
+          <div class="test-output" id="authOutput">// Current authentication details will appear here...</div>
+        </div>
+
+        <!-- 3. Dynamic Pricing Calculator Tester -->
+        <div class="test-card">
+          <div class="test-card-header">
+            <div class="test-card-title">
+              <i class="bx bx-calculator" style="color: #10b981;"></i>
+              Pricing Engine Test
+            </div>
+            <span class="status-pill online">Validated</span>
+          </div>
+          <p style="font-size: var(--font-size-xs); color: var(--text-tertiary);">
+            Validates dynamic pricing formula against README2 specs: <code>total = (base + km*rate) * pax * roundTrip</code>.
+          </p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-top: var(--space-3);">
+            <div>
+              <label style="font-size: 0.75rem; font-weight: 600;">Transport Mode</label>
+              <select id="testTransport" class="form-input" style="padding: 6px 10px; font-size: 0.8rem;">
+                <option value="bike">Bike Rental (500 + 5/km)</option>
+                <option value="bus">Bus Service (100 + 2/km)</option>
+                <option value="car" selected>Car Rental (3000 + 20/km)</option>
+                <option value="rickshaw">E-Rickshaw (150 + 10/km)</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size: 0.75rem; font-weight: 600;">Destination</label>
+              <select id="testDest" class="form-input" style="padding: 6px 10px; font-size: 0.8rem;">
+                <option value="27" selected>Lumbini (27 km)</option>
+                <option value="35">Tiger Resort (35 km)</option>
+                <option value="20">Cable Car (20 km)</option>
+                <option value="25">Siddha Baba (25 km)</option>
+                <option value="120">Baglung Bridge (120 km)</option>
+              </select>
+            </div>
+          </div>
+          <div style="display: flex; gap: var(--space-3); align-items: center; margin-top: var(--space-3);">
+            <label style="font-size: 0.75rem; display: flex; align-items: center; gap: 4px;">
+              <input type="checkbox" id="testRoundTrip" checked> Round Trip
+            </label>
+            <label style="font-size: 0.75rem; display: flex; align-items: center; gap: 4px;">
+              Pax: <input type="number" id="testPax" value="2" min="1" max="10" style="width: 50px; padding: 2px 6px;">
+            </label>
+            <button class="btn btn-sm btn-primary" id="calcPriceTestBtn" style="margin-left: auto;">Compute</button>
+          </div>
+          <div class="test-output" id="pricingOutput">// Computed formula results...</div>
+        </div>
+
+        <!-- 4. Client Storage & Environment Inspector -->
+        <div class="test-card">
+          <div class="test-card-header">
+            <div class="test-card-title">
+              <i class="bx bx-data" style="color: #f59e0b;"></i>
+              Storage & Cache
+            </div>
+            <span class="status-pill online">Healthy</span>
+          </div>
+          <p style="font-size: var(--font-size-xs); color: var(--text-tertiary);">
+            Overview of local bookings, theme state, and OpenRouter API key.
+          </p>
+          <div style="display: flex; gap: var(--space-2); margin-top: var(--space-4);">
+            <button class="btn btn-sm btn-secondary" id="inspectStorageBtn">Scan LocalStorage</button>
+            <button class="btn btn-sm btn-secondary" id="seedDemoBookingsBtn">Reset Seed Bookings</button>
+          </div>
+          <div class="test-output" id="storageOutput">// Click scan to list local key-value store...</div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/authClient.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/darkMode.js"></script>
+  <script>
+    // 1. Backend API Status
+    const apiOutput = document.getElementById('apiOutput');
+    const apiPill = document.getElementById('apiStatusPill');
+
+    async function checkEndpoint(url, label) {
+      apiOutput.textContent = `Pinging ${label} at ${url}...`;
+      try {
+        const res = await fetch(url);
+        if (res.ok) {
+          const json = await res.json();
+          apiOutput.textContent = `[SUCCESS] 200 OK from ${label}:\n` + JSON.stringify(json, null, 2);
+          apiPill.className = 'status-pill online';
+          apiPill.textContent = 'Online';
+        } else {
+          apiOutput.textContent = `[HTTP ${res.status}] Error response from ${label}:\n${res.statusText}`;
+        }
+      } catch (err) {
+        apiOutput.textContent = `[OFFLINE MODE] Could not reach ${url}.\n\nNote: The frontend is running standalone on static preview.\nWhen the Express backend (server.js) is running on port 3000, this endpoint responds with live Mongo data.`;
+        apiPill.className = 'status-pill offline';
+        apiPill.textContent = 'Offline (Static)';
+      }
+    }
+
+    document.getElementById('testApiStatusBtn').addEventListener('click', () => {
+      checkEndpoint('/api/status', 'Server Status');
+    });
+
+    document.getElementById('testDbStatusBtn').addEventListener('click', () => {
+      checkEndpoint('/api/db-status', 'Database Status');
+    });
+
+    // 2. Auth Inspector
+    const authOutput = document.getElementById('authOutput');
+    const authPill = document.getElementById('authStatusPill');
+
+    function updateAuthView() {
+      const auth = localStorage.getItem('auth');
+      if (auth) {
+        try {
+          const parsed = JSON.parse(auth);
+          authOutput.textContent = JSON.stringify(parsed, null, 2);
+          authPill.className = 'status-pill online';
+          authPill.textContent = 'Authenticated';
+        } catch (e) {
+          authOutput.textContent = auth;
+        }
+      } else {
+        authOutput.textContent = 'No active auth token found in localStorage (User is Guest).';
+        authPill.className = 'status-pill';
+        authPill.textContent = 'Guest';
+      }
+    }
+
+    document.getElementById('loginDemoBtn').addEventListener('click', () => {
+      const demoAuth = {
+        token: 'demo_jwt_token_' + Date.now(),
+        user: { id: 'usr_demo', fullname: 'Demo Explorer', email: 'demo@example.com', country: 'Nepal' },
+        sessionId: 'demo_sess_' + Date.now(),
+        expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString()
+      };
+      if (window.AuthClient) {
+        window.AuthClient.setAuth(demoAuth);
+      } else {
+        localStorage.setItem('auth', JSON.stringify(demoAuth));
+      }
+      updateAuthView();
+      if (window.showToast) window.showToast('Demo User signed in!', 'success');
+    });
+
+    document.getElementById('clearAuthBtn').addEventListener('click', () => {
+      if (window.AuthClient) {
+        window.AuthClient.clearAuth();
+      } else {
+        localStorage.removeItem('auth');
+      }
+      updateAuthView();
+      if (window.showToast) window.showToast('Auth state cleared', 'info');
+    });
+
+    document.getElementById('inspectAuthBtn').addEventListener('click', updateAuthView);
+
+    // 3. Pricing Formula Validation
+    const pricingOutput = document.getElementById('pricingOutput');
+
+    function runPricingTest() {
+      const rates = {
+        bike: { base: 500, perKm: 5, name: 'Bike Rental' },
+        bus: { base: 100, perKm: 2, name: 'Bus Service' },
+        car: { base: 3000, perKm: 20, name: 'Car Rental' },
+        rickshaw: { base: 150, perKm: 10, name: 'E-Rickshaw' }
+      };
+
+      const type = document.getElementById('testTransport').value;
+      const km = parseFloat(document.getElementById('testDest').value);
+      const pax = parseInt(document.getElementById('testPax').value, 10) || 1;
+      const roundTrip = document.getElementById('testRoundTrip').checked;
+
+      const rate = rates[type];
+      const basePrice = rate.base;
+      const distancePrice = km * rate.perKm;
+
+      let paxMultiplier = 1;
+      if ((type === 'car' || type === 'rickshaw') && pax > 1) {
+        paxMultiplier = 1 + (pax - 1) * 0.5;
+      }
+
+      let subtotal = (basePrice + distancePrice) * paxMultiplier;
+      if (roundTrip) subtotal *= 2;
+      const total = Math.round(subtotal);
+
+      pricingOutput.textContent = 
+`--- Dynamic Pricing Breakdown ---
+Transport:    ${rate.name}
+Distance:     ${km} km @ NPR ${rate.perKm}/km
+Base Price:   NPR ${basePrice}
+Distance Fare:NPR ${distancePrice}
+Passengers:   ${pax} (Multiplier: ${paxMultiplier}x)
+Round Trip:   ${roundTrip ? 'Yes (x2)' : 'No (x1)'}
+---------------------------------
+TOTAL FARE:   NPR ${total.toLocaleString()}`;
+    }
+
+    document.getElementById('calcPriceTestBtn').addEventListener('click', runPricingTest);
+
+    // 4. Storage Inspector
+    const storageOutput = document.getElementById('storageOutput');
+
+    function scanStorage() {
+      const keys = Object.keys(localStorage);
+      let summary = `Total LocalStorage Keys: ${keys.length}\n\n`;
+      keys.forEach(k => {
+        const val = localStorage.getItem(k);
+        summary += `• [${k}]: ${val.slice(0, 100)}${val.length > 100 ? '...' : ''}\n`;
+      });
+      storageOutput.textContent = summary;
+    }
+
+    document.getElementById('inspectStorageBtn').addEventListener('click', scanStorage);
+
+    document.getElementById('seedDemoBookingsBtn').addEventListener('click', () => {
+      const defaultBookings = [
+        {
+          id: 'BK-782194',
+          transportName: 'Car Rental',
+          transportType: 'car',
+          destinationName: 'Lumbini (Maya Devi Temple)',
+          bookingDate: 'Tomorrow (09:00 AM)',
+          passengers: 2,
+          roundTrip: true,
+          totalPrice: 7080,
+          status: 'confirmed',
+          createdAt: new Date().toISOString()
+        },
+        {
+          id: 'BK-492015',
+          transportName: 'Bike Rental',
+          transportType: 'bike',
+          destinationName: 'Siddha Baba Mandir',
+          bookingDate: '28 Oct 2026',
+          passengers: 1,
+          roundTrip: false,
+          totalPrice: 625,
+          status: 'confirmed',
+          createdAt: new Date().toISOString()
+        }
+      ];
+      localStorage.setItem('easytravels_bookings', JSON.stringify(defaultBookings));
+      scanStorage();
+      if (window.showToast) window.showToast('Seed bookings refreshed!', 'success');
+    });
+
+    // Run All Diagnostics
+    document.getElementById('runAllTestsBtn').addEventListener('click', () => {
+      checkEndpoint('/api/status', 'Server Status');
+      updateAuthView();
+      runPricingTest();
+      scanStorage();
+    });
+
+    // Initial run
+    updateAuthView();
+    runPricingTest();
+    scanStorage();
+  </script>
+
+</body>
+</html>

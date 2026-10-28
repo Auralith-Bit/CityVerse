@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about CityVerse, our mission to support travelers in Butwal & Bhairahawa.">
+  <title>About Us — CityVerse</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .about-hero {
+      padding-top: calc(var(--header-height) + var(--space-12));
+      padding-bottom: var(--space-12);
+      background: linear-gradient(135deg, var(--primary-700), var(--primary-500));
+      color: white;
+      text-align: center;
+    }
+    .about-hero h1 {
+      font-size: var(--font-size-4xl);
+      color: white;
+      margin-bottom: var(--space-3);
+    }
+    .about-hero p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: var(--font-size-lg);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+    .timeline-container {
+      position: relative;
+      max-width: 800px;
+      margin: var(--space-12) auto 0;
+      padding: 0 var(--space-4);
+    }
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: var(--neutral-300);
+      transform: translateX(-50%);
+    }
+    [data-theme="dark"] .timeline-container::before {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: var(--space-8);
+      width: 50%;
+      padding: 0 var(--space-6);
+    }
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      text-align: left;
+    }
+    .timeline-dot {
+      position: absolute;
+      top: 6px;
+      width: 16px;
+      height: 16px;
+      background: var(--primary-500);
+      border: 3px solid var(--bg-card);
+      border-radius: 50%;
+      z-index: 2;
+    }
+    .timeline-item:nth-child(odd) .timeline-dot {
+      right: -8px;
+    }
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: -8px;
+    }
+    .timeline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--neutral-200);
+      padding: var(--space-5);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+    }
+    [data-theme="dark"] .timeline-card {
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .timeline-year {
+      font-weight: 800;
+      color: var(--primary-500);
+      font-size: var(--font-size-sm);
+      margin-bottom: 4px;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-8);
+    }
+    .value-card {
+      background: var(--bg-card);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      text-align: center;
+      transition: all 0.3s;
+    }
+    [data-theme="dark"] .value-card {
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    .value-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(15, 155, 142, 0.12);
+      color: var(--primary-500);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: var(--space-4);
+    }
+    @media (max-width: 768px) {
+      .timeline-container::before {
+        left: 20px;
+      }
+      .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 45px;
+        padding-right: 0;
+        text-align: left !important;
+      }
+      .timeline-dot {
+        left: 12px !important;
+        right: auto !important;
+      }
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader"></div>
+    <p class="loader-text">CityVerse</p>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="landing.html" class="nav-logo">
+        <div class="nav-logo-icon"><i class="bx bx-globe"></i></div>
+        <span>CityVerse</span>
+      </a>
+
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="places.html" class="nav-link">Attractions</a>
+        <a href="index.html#transport" class="nav-link">Transport</a>
+        <a href="bookings.html" class="nav-link">Bookings</a>
+        <a href="nightlife.html" class="nav-link">Nightlife</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="bx bx-moon"></i>
+        </button>
+        <a href="login.html" class="nav-auth-btn nav-login-btn">Log In</a>
+        <a href="signup.html" class="nav-auth-btn nav-signup-btn">Sign Up</a>
+        <div class="nav-toggle" id="navToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- About Hero -->
+  <section class="about-hero">
+    <div class="container">
+      <span style="display: inline-block; padding: 6px 16px; background: rgba(255,255,255,0.15); border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: var(--space-3);">
+        <i class="bx bx-heart"></i> Our Story & Heritage
+      </span>
+      <h1>Gateway to Buddha's Homeland</h1>
+      <p>
+        CityVerse was founded with a single mission: to provide travelers seamless, fair, and memorable journeys throughout Butwal and Bhairahawa.
+      </p>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="section" style="background: var(--bg-primary);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: center;">
+        <div class="reveal">
+          <span class="section-subtitle">Who We Are</span>
+          <h2 class="section-title">Connecting You with Nepal's Spiritual Heartland</h2>
+          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-4);">
+            Bhairahawa (officially known as Siddharthanagar) is a vibrant city in Rupandehi district. Butwal is another major commercial hub in the region.
+          </p>
+          <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: var(--space-6);">
+            Travelers face unpredictable taxi fares, language barriers, and fragmented booking systems. We built a unified tourism and transport portal connecting travelers directly with vetted local drivers, eco-friendly E-Rickshaws, and transparent dynamic pricing based on actual distances.
+          </p>
+          <div style="display: flex; gap: var(--space-6);">
+            <div>
+              <strong style="display: block; font-size: var(--font-size-2xl); color: var(--primary-500);">10K+</strong>
+              <span style="font-size: var(--font-size-xs); color: var(--text-tertiary);">Pilgrims Served</span>
+            </div>
+            <div>
+              <strong style="display: block; font-size: var(--font-size-2xl); color: var(--primary-500);">100%</strong>
+              <span style="font-size: var(--font-size-xs); color: var(--text-tertiary);">Price Transparency</span>
+            </div>
+            <div>
+              <strong style="display: block; font-size: var(--font-size-2xl); color: var(--primary-500);">4.9★</strong>
+              <span style="font-size: var(--font-size-xs); color: var(--text-tertiary);">Customer Rating</span>
+            </div>
+          </div>
+        </div>
+        <div class="reveal delay-1">
+          <img src="images/hero-lumbini.jpg" alt="Butwal and Bhairahawa" style="width: 100%; border-radius: var(--radius-2xl); box-shadow: var(--shadow-xl); object-fit: cover; max-height: 400px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle">Our Principles</span>
+        <h2 class="section-title">Why Travel With CityVerse</h2>
+        <p class="section-description">
+          We combine local Nepali warmth with modern reliability to make your stay effortless.
+        </p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card reveal delay-1">
+          <div class="value-icon"><i class="bx bx-shield-quarter"></i></div>
+          <h3>Verified Local Drivers</h3>
+          <p style="font-size: var(--font-size-sm); color: var(--text-tertiary); margin-top: var(--space-2);">
+            All drivers undergo background verification, know every sacred shortcut, and ensure safe, courteous service.
+          </p>
+        </div>
+        <div class="value-card reveal delay-2">
+          <div class="value-icon"><i class="bx bx-calculator"></i></div>
+          <h3>Clear Dynamic Pricing</h3>
+          <p style="font-size: var(--font-size-sm); color: var(--text-tertiary); margin-top: var(--space-2);">
+            Transparent kilometer-based rates with zero hidden surcharges or unfair tourist markups.
+          </p>
+        </div>
+        <div class="value-card reveal delay-3">
+          <div class="value-icon"><i class="bx bx-leaf"></i></div>
+          <h3>Eco-Friendly Mobility</h3>
+          <p style="font-size: var(--font-size-sm); color: var(--text-tertiary); margin-top: var(--space-2);">
+            We actively support zero-emission electric E-Rickshaws and clean rentals around the UNESCO sacred peace zone.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Historical Timeline -->
+  <section class="section" style="background: var(--bg-primary);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle">Historical Journey</span>
+        <h2 class="section-title">Lumbini Across the Millennia</h2>
+        <p class="section-description">
+          A brief chronicle of the holy grounds from ancient peace to modern discovery.
+        </p>
+      </div>
+
+      <div class="timeline-container">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">623 BCE</div>
+            <h4>Birth of Siddhartha Gautama</h4>
+            <p style="font-size: var(--font-size-xs); color: var(--text-tertiary);">
+              Queen Maya Devi gave birth to Prince Siddhartha under a Sal tree in Lumbini garden.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">249 BCE</div>
+            <h4>Emperor Ashoka's Pilgrimage</h4>
+            <p style="font-size: var(--font-size-xs); color: var(--text-tertiary);">
+              Mauryan Emperor Ashoka visited Lumbini and erected the inscribed sandstone pillar marking Buddha's birthplace.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">1896 CE</div>
+            <h4>Rediscovery of Ashoka Pillar</h4>
+            <p style="font-size: var(--font-size-xs); color: var(--text-tertiary);">
+              General Khadga Shumsher and archaeologist Dr. Alois Führer rediscovered the pillar buried in dense Terai forest.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-3">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">1997 CE</div>
+            <h4>UNESCO World Heritage Status</h4>
+            <p style="font-size: var(--font-size-xs); color: var(--text-tertiary);">
+              Lumbini was officially inscribed as a UNESCO World Heritage Site under international preservation.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-year">2022 CE</div>
+            <h4>Gautam Buddha International Airport</h4>
+            <p style="font-size: var(--font-size-xs); color: var(--text-tertiary);">
+              Commercial operations opened at Bhairahawa's international airport, creating direct global air links to Lumbini.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sacred Etiquette Guide -->
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle">Visitor Guidelines</span>
+        <h2 class="section-title">Sacred Etiquette & Travel Tips</h2>
+        <p class="section-description">
+          Help preserve the serenity of Lumbini by observing these traditional customs.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); max-width: 900px; margin: 0 auto;">
+        <div class="timeline-card reveal delay-1" style="display: flex; gap: var(--space-4); align-items: flex-start;">
+          <i class="bx bx-check-shield" style="font-size: 2rem; color: var(--primary-500);"></i>
+          <div>
+            <h4 style="margin-bottom: 4px;">Modest Dress Code</h4>
+            <p style="font-size: var(--font-size-xs); color: var(--text-tertiary);">
+              Please cover shoulders and knees when visiting the Maya Devi Temple and all monastic compounds.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-card reveal delay-2" style="display: flex; gap: var(--space-4); align-items: flex-start;">
+          <i class="bx bx-walk" style="font-size: 2rem; color: var(--primary-500);"></i>
+          <div>
+            <h4 style="margin-bottom: 4px;">Footwear Removal</h4>
+            <p style="font-size: var(--font-size-xs); color: var(--text-tertiary);">
+              Shoes must be removed before entering the central sanctum of the Maya Devi Temple and meditation halls.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-card reveal delay-1" style="display: flex; gap: var(--space-4); align-items: flex-start;">
+          <i class="bx bx-camera" style="font-size: 2rem; color: var(--primary-500);"></i>
+          <div>
+            <h4 style="margin-bottom: 4px;">Photography Rules</h4>
+            <p style="font-size: var(--font-size-xs); color: var(--text-tertiary);">
+              Photography is allowed in the gardens, but prohibited directly inside the inner Marker Stone chamber.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-card reveal delay-2" style="display: flex; gap: var(--space-4); align-items: flex-start;">
+          <i class="bx bx-sun" style="font-size: 2rem; color: var(--primary-500);"></i>
+          <div>
+            <h4 style="margin-bottom: 4px;">Weather & Hydration</h4>
+            <p style="font-size: var(--font-size-xs); color: var(--text-tertiary);">
+              Carry a water bottle and sun hat. Winter visits (Nov–Feb) are crisp, while summer requires sun protection.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <div class="footer-logo-icon"><i class="bx bx-globe"></i></div>
+              <span>EasyTravels</span>
+            </div>
+            <p>
+              Your trusted companion for exploring Bhairahawa & Lumbini.
+              We make travel easy, affordable, and unforgettable in Nepal's
+              most sacred region.
+            </p>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" aria-label="Twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" aria-label="YouTube"><i class="bx bxl-youtube"></i></a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="places.html">Attractions</a></li>
+              <li><a href="index.html#transport">Transport</a></li>
+              <li><a href="bookings.html">Bookings</a></li>
+              <li><a href="nightlife.html">Nightlife</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Explore</h4>
+            <ul class="footer-links">
+              <li><a href="bookings.html?destination=butwal">Butwal</a></li>
+              <li><a href="bookings.html?destination=bhairahawa">Bhairahawa</a></li>
+              <li><a href="bookings.html?destination=tiger-resort">Tiger Resort</a></li>
+              <li><a href="bookings.html?destination=siddha-baba">Siddha Baba</a></li>
+              <li><a href="bookings.html?destination=cable-car">Cable Car</a></li>
+              <li><a href="bookings.html?destination=baglung-bridge">Suspension Bridge</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Newsletter</h4>
+            <p class="footer-newsletter-text" style="color: var(--neutral-500); font-size: var(--font-size-sm); margin-bottom: var(--space-4);">
+              Subscribe for travel tips, deals, and updates about Butwal & Bhairahawa.
+            </p>
+            <form class="footer-newsletter-form" id="newsletterForm">
+              <input type="email" placeholder="Enter your email" required>
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 CityVerse. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/authClient.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/darkMode.js"></script>
+
+</body>
+</html>

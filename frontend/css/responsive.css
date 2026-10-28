@@ -1,0 +1,321 @@
+/* ============================================
+   EasyTravels — Responsive Styles
+   ============================================ */
+
+/* ---------- Tablet (max-width: 1024px) ---------- */
+@media (max-width: 1024px) {
+  :root {
+    --font-size-7xl: 3.5rem;
+    --font-size-6xl: 3rem;
+    --font-size-5xl: 2.5rem;
+    --font-size-4xl: 2rem;
+  }
+
+  .container {
+    padding: 0 var(--space-5);
+  }
+
+  .section {
+    padding: var(--space-16) 0;
+  }
+
+  /* Nav */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background: var(--bg-primary);
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-12);
+    box-shadow: var(--shadow-2xl);
+    transition: right var(--transition-base);
+    z-index: 100;
+  }
+
+  .nav-menu.open,
+  .nav-menu.active {
+    right: 0;
+  }
+
+  .nav-link {
+    color: var(--text-primary);
+    font-size: var(--font-size-lg);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--primary-500);
+    background: var(--primary-50);
+  }
+
+  [data-theme="dark"] .nav-link:hover,
+  [data-theme="dark"] .nav-link.active {
+    background: rgba(15, 155, 142, 0.15);
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  /* Hero */
+  .hero-stats {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    margin-top: var(--space-10);
+    justify-content: flex-start;
+  }
+
+  /* About */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .about-content {
+    padding-left: 0;
+  }
+
+  .about-image {
+    height: 400px;
+  }
+
+  /* Places */
+  .places-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Transport */
+  .transport-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Testimonials */
+  .testimonial-card {
+    min-width: calc(50% - var(--space-6));
+  }
+
+  /* Contact */
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+}
+
+/* ---------- Mobile Large (max-width: 768px) ---------- */
+@media (max-width: 768px) {
+  :root {
+    --font-size-7xl: 2.75rem;
+    --font-size-6xl: 2.25rem;
+    --font-size-5xl: 2rem;
+    --font-size-4xl: 1.75rem;
+    --font-size-3xl: 1.5rem;
+    --header-height: 70px;
+  }
+
+  .section {
+    padding: var(--space-12) 0;
+  }
+
+  .section-header {
+    margin-bottom: var(--space-10);
+  }
+
+  /* Hero */
+  .hero-content {
+    padding: var(--header-height) var(--space-2) var(--space-8);
+  }
+
+  .hero-title {
+    font-size: var(--font-size-5xl);
+  }
+
+  .hero-description {
+    font-size: var(--font-size-base);
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .hero-stat {
+    flex: 1;
+    min-width: 100px;
+  }
+
+  /* About */
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+
+  .about-image {
+    height: 300px;
+  }
+
+  /* Places */
+  .places-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .places-filter {
+    gap: var(--space-2);
+  }
+
+  .filter-btn {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-xs);
+  }
+
+  /* Transport */
+  .transport-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Testimonials */
+  .testimonial-card {
+    min-width: calc(100% - var(--space-6));
+  }
+
+  /* Contact */
+  .contact-form .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-wrapper {
+    padding: var(--space-6);
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--space-4);
+    text-align: center;
+  }
+
+  /* CTA */
+  .cta-banner h2 {
+    font-size: var(--font-size-3xl);
+  }
+
+  /* Bookings Page */
+  .booking-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .booking-form .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-content {
+    margin-top: 0;
+    padding-top: var(--space-6);
+  }
+
+  /* Auth Pages (Login / Signup) */
+  .auth-page {
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .auth-left {
+    display: none;
+  }
+
+  .auth-right {
+    padding: var(--space-8) var(--space-4);
+    min-height: 100vh;
+  }
+
+  .auth-form-container {
+    max-width: 100%;
+  }
+
+  /* Timeline (About page) */
+  .timeline-container::before {
+    left: 24px;
+  }
+
+  .timeline-item {
+    width: 100% !important;
+    left: 0 !important;
+    text-align: left !important;
+    padding-left: 56px !important;
+    padding-right: 0 !important;
+  }
+
+  .timeline-dot {
+    left: 16px !important;
+    right: auto !important;
+  }
+
+  /* Places Search Bar */
+  .search-filter-bar {
+    margin-top: var(--space-4) !important;
+    padding: var(--space-4);
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Grid Utilities */
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Mobile Small (max-width: 480px) ---------- */
+@media (max-width: 480px) {
+  :root {
+    --font-size-7xl: 2.25rem;
+    --font-size-5xl: 1.75rem;
+    --font-size-4xl: 1.5rem;
+  }
+
+  .container {
+    padding: 0 var(--space-4);
+  }
+
+  .hero-content {
+    padding: var(--header-height) 0 var(--space-4);
+  }
+
+  .btn-lg {
+    padding: var(--space-3) var(--space-8);
+    font-size: var(--font-size-base);
+  }
+
+  .place-card-image {
+    height: 200px;
+  }
+
+  .transport-card {
+    padding: var(--space-6);
+  }
+
+  .nav-menu {
+    width: 100%;
+  }
+}

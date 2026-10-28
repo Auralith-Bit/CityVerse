@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book bikes, buses, cars, and e-rickshaws for Butwal and Bhairahawa with transparent dynamic pricing.">
+  <title>Transport Bookings — CityVerse</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader"></div>
+    <p class="loader-text">CityVerse</p>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="landing.html" class="nav-logo">
+        <div class="nav-logo-icon"><i class="bx bx-globe"></i></div>
+        <span>CityVerse</span>
+      </a>
+
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="places.html" class="nav-link">Attractions</a>
+        <a href="bookings.html" class="nav-link active">Bookings</a>
+        <a href="nightlife.html" class="nav-link">Nightlife</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="bx bx-moon"></i>
+        </button>
+        <a href="login.html" class="nav-auth-btn nav-login-btn">Log In</a>
+        <a href="signup.html" class="nav-auth-btn nav-signup-btn">Sign Up</a>
+        <div class="nav-toggle" id="navToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Bookings Page -->
+  <div class="bookings-page">
+    
+    <!-- Hero Banner -->
+    <section class="booking-hero">
+      <div class="container">
+        <h1>Transport & Tour Bookings</h1>
+        <p>Dynamic transparent pricing, vetted local drivers, and instant reservation confirmation.</p>
+      </div>
+    </section>
+
+    <!-- Main Booking Content -->
+    <div class="booking-content">
+      <div class="booking-grid">
+
+        <!-- Left: Booking Form -->
+        <div class="booking-form-card">
+          <h2>Reserve Your Ride</h2>
+          <p>Fill in your journey details below. Pricing updates automatically in real-time.</p>
+
+          <form id="bookingForm" class="booking-form">
+            <!-- Transport Mode Selection Grid -->
+            <div class="form-group">
+              <label class="form-label">Select Transportation Mode</label>
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3);" id="transportSelectGroup">
+                <label class="transport-option-card active" data-type="bike" style="border: 2px solid var(--primary-500); background: var(--bg-secondary); border-radius: var(--radius-xl); padding: var(--space-4); cursor: pointer; display: flex; align-items: center; gap: var(--space-3); transition: all 0.2s;">
+                  <input type="radio" name="transportType" value="bike" checked style="display: none;">
+                  <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(15, 155, 142, 0.15); color: var(--primary-500); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+                    <i class="bx bx-cycling"></i>
+                  </div>
+                  <div>
+                    <strong style="display: block; font-size: var(--font-size-sm); color: var(--text-primary);">Bike Rental</strong>
+                    <span style="font-size: var(--font-size-xs); color: var(--text-tertiary);">NPR 500 + 5/km</span>
+                  </div>
+                </label>
+
+                <label class="transport-option-card" data-type="bus" style="border: 2px solid var(--neutral-200); background: var(--bg-secondary); border-radius: var(--radius-xl); padding: var(--space-4); cursor: pointer; display: flex; align-items: center; gap: var(--space-3); transition: all 0.2s;">
+                  <input type="radio" name="transportType" value="bus" style="display: none;">
+                  <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(59, 130, 246, 0.15); color: #3b82f6; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+                    <i class="bx bx-bus"></i>
+                  </div>
+                  <div>
+                    <strong style="display: block; font-size: var(--font-size-sm); color: var(--text-primary);">Bus Service</strong>
+                    <span style="font-size: var(--font-size-xs); color: var(--text-tertiary);">NPR 100 + 2/km</span>
+                  </div>
+                </label>
+
+                <label class="transport-option-card" data-type="car" style="border: 2px solid var(--neutral-200); background: var(--bg-secondary); border-radius: var(--radius-xl); padding: var(--space-4); cursor: pointer; display: flex; align-items: center; gap: var(--space-3); transition: all 0.2s;">
+                  <input type="radio" name="transportType" value="car" style="display: none;">
+                  <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(245, 158, 11, 0.15); color: #f59e0b; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+                    <i class="bx bx-car"></i>
+                  </div>
+                  <div>
+                    <strong style="display: block; font-size: var(--font-size-sm); color: var(--text-primary);">Car Rental</strong>
+                    <span style="font-size: var(--font-size-xs); color: var(--text-tertiary);">NPR 3,000 + 20/km</span>
+                  </div>
+                </label>
+
+                <label class="transport-option-card" data-type="rickshaw" style="border: 2px solid var(--neutral-200); background: var(--bg-secondary); border-radius: var(--radius-xl); padding: var(--space-4); cursor: pointer; display: flex; align-items: center; gap: var(--space-3); transition: all 0.2s;">
+                  <input type="radio" name="transportType" value="rickshaw" style="display: none;">
+                  <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); color: #10b981; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+                    <i class="bx bx-trip"></i>
+                  </div>
+                  <div>
+                    <strong style="display: block; font-size: var(--font-size-sm); color: var(--text-primary);">E-Rickshaw</strong>
+                    <span style="font-size: var(--font-size-xs); color: var(--text-tertiary);">NPR 150 + 10/km</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Destination & Date -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="bookingDestination">Destination</label>
+                <select class="form-input" id="bookingDestination" required style="cursor: pointer;">
+                  <option value="butwal" data-km="0" selected>Butwal City Center — 0 km</option>
+                  <option value="bhairahawa" data-km="5">Bhairahawa (Siddharthanagar) — 5 km</option>
+                  <option value="manimukunda" data-km="2">Manimukunda Park — 2 km</option>
+                  <option value="hill-park" data-km="3">Butwal Hill Park — 3 km</option>
+                  <option value="devdaha" data-km="12">Devdaha — 12 km</option>
+                  <option value="siddhartha-chowk" data-km="1">Siddhartha Chowk — 1 km</option>
+                  <option value="buddha-park" data-km="7">Buddha Park — 7 km</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="bookingDate">Date of Travel</label>
+                <input type="date" class="form-input" id="bookingDate" required>
+              </div>
+            </div>
+
+            <!-- Passengers & Contact -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="bookingPassengers">Passengers</label>
+                <select class="form-input" id="bookingPassengers" style="cursor: pointer;">
+                  <option value="1" selected>1 Passenger</option>
+                  <option value="2">2 Passengers</option>
+                  <option value="3">3 Passengers</option>
+                  <option value="4">4 Passengers</option>
+                  <option value="5">5+ Passengers (Group)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="bookingPhone">Phone / WhatsApp</label>
+                <input type="tel" class="form-input" id="bookingPhone" placeholder="+977-9800000000" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="bookingEmail">Email Address</label>
+              <input type="email" class="form-input" id="bookingEmail" placeholder="your-email@example.com" required>
+            </div>
+
+            <!-- Round Trip Checkbox -->
+            <div class="checkbox-group" style="background: var(--bg-secondary); padding: var(--space-4) var(--space-5); border-radius: var(--radius-lg); margin-bottom: var(--space-4);">
+              <input type="checkbox" id="bookingRoundTrip">
+              <label for="bookingRoundTrip" style="display: flex; flex-direction: column;">
+                <strong style="color: var(--text-primary); font-size: var(--font-size-sm);">Round Trip (Return ride included)</strong>
+                <span style="color: var(--text-tertiary); font-size: var(--font-size-xs);">Your driver waits or schedules return pickup at your preferred time.</span>
+              </label>
+            </div>
+
+            <!-- Special Requests -->
+            <div class="form-group">
+              <label class="form-label" for="bookingNotes">Special Requests (Optional)</label>
+              <input type="text" class="form-input" id="bookingNotes" placeholder="e.g. Airport pickup terminal, luggage space, AC preference">
+            </div>
+
+            <!-- Live Price Summary Box -->
+            <div class="price-summary">
+              <h3>Trip Price Breakdown</h3>
+              <div class="price-row">
+                <span>Base Fare (<span id="summaryTransportName">Bike</span>)</span>
+                <span id="summaryBasePrice">NPR 500</span>
+              </div>
+              <div class="price-row">
+                <span>Distance (<span id="summaryDistanceKm">27 km</span> @ <span id="summaryRatePerKm">NPR 5/km</span>)</span>
+                <span id="summaryDistancePrice">NPR 135</span>
+              </div>
+              <div class="price-row" id="passengerMultiplierRow" style="display: none;">
+                <span>Passenger Multiplier (<span id="summaryPassengerCount">1</span> pax)</span>
+                <span id="summaryPassengerMultiplier">1.0x</span>
+              </div>
+              <div class="price-row" id="roundTripRow" style="display: none;">
+                <span>Round Trip Multiplier</span>
+                <span>2x</span>
+              </div>
+              <div class="price-row total">
+                <span>Total Estimated Fare</span>
+                <span id="summaryTotalPrice">NPR 635</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: var(--space-6);" id="confirmBookingBtn">
+              <i class="bx bx-check-double"></i>
+              Confirm & Book Ride
+            </button>
+          </form>
+        </div>
+
+        <!-- Right: My Bookings Panel -->
+        <div class="my-bookings-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+            <h2 style="margin-bottom: 0;"><i class="bx bx-receipt"></i> My Bookings</h2>
+            <span class="booking-status confirmed" id="bookingCountBadge">2 Active</span>
+          </div>
+          <p style="color: var(--text-tertiary); font-size: var(--font-size-sm); margin-bottom: var(--space-6);">
+            Manage your scheduled itineraries. You can view digital boarding passes or cancel any trip anytime.
+          </p>
+
+          <!-- Bookings List Container -->
+          <div id="bookingsList">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Digital Ticket / QR Modal -->
+  <div id="ticketModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 10000; align-items: center; justify-content: center; padding: var(--space-6); backdrop-filter: blur(6px);">
+    <div style="background: var(--bg-card); max-width: 440px; width: 100%; border-radius: var(--radius-2xl); border: 1px solid var(--neutral-200); padding: var(--space-8); box-shadow: var(--shadow-2xl); position: relative; animation: popIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);">
+      <button id="closeTicketModal" style="position: absolute; top: var(--space-5); right: var(--space-5); background: none; border: none; font-size: 1.5rem; color: var(--text-tertiary); cursor: pointer;">
+        <i class="bx bx-x"></i>
+      </button>
+
+      <div style="text-align: center; margin-bottom: var(--space-6);">
+        <div style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: rgba(15, 155, 142, 0.15); color: var(--primary-500); font-size: 1.6rem; margin-bottom: var(--space-3);">
+          <i class="bx bx-check-shield"></i>
+        </div>
+        <h3 style="font-size: var(--font-size-xl); margin-bottom: 4px;">CityVerse Boarding Pass</h3>
+        <p style="font-size: var(--font-size-xs); color: var(--text-tertiary);" id="ticketBookingId">ID: BK-849204</p>
+      </div>
+
+      <div style="background: var(--bg-secondary); border-radius: var(--radius-xl); padding: var(--space-5); border: 1px dashed var(--neutral-300); margin-bottom: var(--space-6);">
+        <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-3); font-size: var(--font-size-sm);">
+          <span style="color: var(--text-tertiary);">Destination</span>
+          <strong id="ticketDestination" style="color: var(--text-primary);">Lumbini Sacred Garden</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-3); font-size: var(--font-size-sm);">
+          <span style="color: var(--text-tertiary);">Vehicle Type</span>
+          <strong id="ticketTransport">Car Rental</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-3); font-size: var(--font-size-sm);">
+          <span style="color: var(--text-tertiary);">Date & Passengers</span>
+          <strong id="ticketDatePax">Tomorrow • 2 Passengers</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-3); font-size: var(--font-size-sm);">
+          <span style="color: var(--text-tertiary);">Journey</span>
+          <strong id="ticketTripType">Round Trip</strong>
+        </div>
+        <div style="border-top: 1px solid var(--neutral-200); margin-top: var(--space-3); padding-top: var(--space-3); display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-weight: 600;">Total Fare</span>
+          <span id="ticketTotalFare" style="font-weight: 800; font-size: var(--font-size-lg); color: var(--primary-500);">NPR 7,080</span>
+        </div>
+      </div>
+
+      <!-- Simulated QR Code -->
+      <div style="text-align: center;">
+          <div style="display: inline-block; background: white; padding: 12px; border-radius: 12px; border: 1px solid var(--neutral-200); box-shadow: var(--shadow-sm);">
+            <div style="width: 140px; height: 140px; background: repeating-conic-gradient(#1e293b 0% 25%, #ffffff 0% 50%) 50% / 20px 20px; border-radius: 6px; display: flex; align-items: center; justify-content: center; position: relative;">
+              <div style="background: white; padding: 6px; border-radius: 6px; font-weight: 800; font-size: 0.75rem; color: var(--primary-600); border: 1px solid #1e293b;">
+                CITYVERSE
+              </div>
+            </div>
+          </div>
+        <p style="font-size: var(--font-size-xs); color: var(--text-tertiary); margin-top: var(--space-3);">
+          Show this QR code to your driver upon boarding.
+        </p>
+      </div>
+
+      <button id="printTicketBtn" class="btn btn-secondary" style="width: 100%; margin-top: var(--space-5);">
+        <i class="bx bx-printer"></i>
+        Print / Save Ticket
+      </button>
+    </div>
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <div class="footer-logo-icon"><i class="bx bx-globe"></i></div>
+              <span>CityVerse</span>
+            </div>
+            <p>
+              Your trusted companion for exploring Butwal & Bhairahawa.
+              We make travel easy, affordable, and unforgettable.
+            </p>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" aria-label="Twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" aria-label="YouTube"><i class="bx bxl-youtube"></i></a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#places">Attractions</a></li>
+              <li><a href="index.html#transport">Transport</a></li>
+              <li><a href="bookings.html">Bookings</a></li>
+              <li><a href="nightlife.html">Nightlife</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Explore</h4>
+            <ul class="footer-links">
+              <li><a href="#">Lumbini</a></li>
+              <li><a href="#">Tiger Resort</a></li>
+              <li><a href="#">Siddha Baba Mandir</a></li>
+              <li><a href="#">Cable Car</a></li>
+              <li><a href="#">Suspension Bridge</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Newsletter</h4>
+            <p class="footer-newsletter-text" style="color: var(--neutral-500); font-size: var(--font-size-sm); margin-bottom: var(--space-4);">
+              Subscribe for travel tips, deals, and updates about Butwal & Bhairahawa.
+            </p>
+            <form class="footer-newsletter-form" id="newsletterForm">
+              <input type="email" placeholder="Enter your email" required>
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 CityVerse. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/authClient.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/darkMode.js"></script>
+  <script>
+    // Rates & Destinations matching README2
+    const TRANSPORT_CONFIG = {
+      bike: { name: 'Bike Rental', basePrice: 500, pricePerKm: 5, icon: 'bx-cycling' },
+      bus: { name: 'Bus Service', basePrice: 100, pricePerKm: 2, icon: 'bx-bus' },
+      car: { name: 'Car Rental', basePrice: 3000, pricePerKm: 20, icon: 'bx-car' },
+      rickshaw: { name: 'E-Rickshaw', basePrice: 150, pricePerKm: 10, icon: 'bx-trip' }
+    };
+
+    const DESTINATION_CONFIG = {
+      'butwal': { name: 'Butwal City Center', km: 0 },
+      'bhairahawa': { name: 'Bhairahawa (Siddharthanagar)', km: 5 },
+      'manimukunda': { name: 'Manimukunda Park', km: 2 },
+      'hill-park': { name: 'Butwal Hill Park', km: 3 },
+      'devdaha': { name: 'Devdaha', km: 12 },
+      'siddhartha-chowk': { name: 'Siddhartha Chowk', km: 1 },
+      'buddha-park': { name: 'Buddha Park', km: 7 }
+    };
+
+    // Initialize Default Date to Tomorrow
+    const dateInput = document.getElementById('bookingDate');
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    dateInput.value = tomorrow.toISOString().split('T')[0];
+    dateInput.min = new Date().toISOString().split('T')[0];
+
+    // Seed User Profile if available
+    if (window.AuthClient && window.AuthClient.isAuthenticated()) {
+      const u = window.AuthClient.getUser();
+      if (u) {
+        if (u.email) document.getElementById('bookingEmail').value = u.email;
+        if (u.phone) document.getElementById('bookingPhone').value = u.phone;
+      }
+    }
+
+    // Check URL parameters for preset selection (e.g. from index.html)
+    const urlParams = new URLSearchParams(window.location.search);
+    const preType = urlParams.get('type');
+    const preDest = urlParams.get('destination');
+
+    if (preType && TRANSPORT_CONFIG[preType]) {
+      const radio = document.querySelector(`input[name="transportType"][value="${preType}"]`);
+      if (radio) {
+        radio.checked = true;
+        document.querySelectorAll('.transport-option-card').forEach(c => {
+          c.classList.toggle('active', c.getAttribute('data-type') === preType);
+          c.style.borderColor = c.getAttribute('data-type') === preType ? 'var(--primary-500)' : 'var(--neutral-200)';
+        });
+      }
+    }
+
+    if (preDest && DESTINATION_CONFIG[preDest]) {
+      document.getElementById('bookingDestination').value = preDest;
+    }
+
+    // Transport Option Card Selection Clicks
+    const optionCards = document.querySelectorAll('.transport-option-card');
+    optionCards.forEach(card => {
+      card.addEventListener('click', () => {
+        optionCards.forEach(c => {
+          c.classList.remove('active');
+          c.style.borderColor = 'var(--neutral-200)';
+        });
+        card.classList.add('active');
+        card.style.borderColor = 'var(--primary-500)';
+        card.querySelector('input').checked = true;
+        calculatePrice();
+      });
+    });
+
+    // Form inputs change listener for live pricing
+    const formElements = ['bookingDestination', 'bookingPassengers', 'bookingRoundTrip'];
+    formElements.forEach(id => {
+      document.getElementById(id).addEventListener('change', calculatePrice);
+    });
+
+    function getSelectedTransport() {
+      const checked = document.querySelector('input[name="transportType"]:checked');
+      return checked ? checked.value : 'bike';
+    }
+
+    // Exact Pricing Formula from README2:
+    // distancePrice = distance * pricePerKm
+    // passengerMultiplier:
+    //   - bike: 1
+    //   - bus: 1
+    //   - car / rickshaw: 1 + (passengers - 1) * 0.5 (when passengers > 1)
+    // total = (basePrice + distancePrice) * passengerMultiplier
+    // if roundTrip: total *= 2
+    // totalPrice = Math.round(total)
+    function calculatePrice() {
+      const typeKey = getSelectedTransport();
+      const destKey = document.getElementById('bookingDestination').value;
+      const passengers = parseInt(document.getElementById('bookingPassengers').value, 10) || 1;
+      const roundTrip = document.getElementById('bookingRoundTrip').checked;
+
+      const transport = TRANSPORT_CONFIG[typeKey] || TRANSPORT_CONFIG.bike;
+      const dest = DESTINATION_CONFIG[destKey] || DESTINATION_CONFIG.lumbini;
+
+      const basePrice = transport.basePrice;
+      const distancePrice = dest.km * transport.pricePerKm;
+
+      let passengerMultiplier = 1;
+      if ((typeKey === 'car' || typeKey === 'rickshaw') && passengers > 1) {
+        passengerMultiplier = 1 + (passengers - 1) * 0.5;
+      }
+
+      let total = (basePrice + distancePrice) * passengerMultiplier;
+      if (roundTrip) {
+        total *= 2;
+      }
+      const totalPrice = Math.round(total);
+
+      // Update Breakdown in UI
+      document.getElementById('summaryTransportName').textContent = transport.name;
+      document.getElementById('summaryBasePrice').textContent = `NPR ${basePrice.toLocaleString()}`;
+      document.getElementById('summaryDistanceKm').textContent = `${dest.km} km`;
+      document.getElementById('summaryRatePerKm').textContent = `NPR ${transport.pricePerKm}/km`;
+      document.getElementById('summaryDistancePrice').textContent = `NPR ${distancePrice.toLocaleString()}`;
+
+      const multRow = document.getElementById('passengerMultiplierRow');
+      if (passengerMultiplier > 1) {
+        multRow.style.display = 'flex';
+        document.getElementById('summaryPassengerCount').textContent = passengers;
+        document.getElementById('summaryPassengerMultiplier').textContent = `${passengerMultiplier}x`;
+      } else {
+        multRow.style.display = 'none';
+      }
+
+      const rtRow = document.getElementById('roundTripRow');
+      rtRow.style.display = roundTrip ? 'flex' : 'none';
+
+      document.getElementById('summaryTotalPrice').textContent = `NPR ${totalPrice.toLocaleString()}`;
+
+      return {
+        transportType: typeKey,
+        transportName: transport.name,
+        destination: destKey,
+        destinationName: dest.name,
+        distanceKm: dest.km,
+        passengers,
+        roundTrip,
+        basePrice,
+        distancePrice,
+        passengerMultiplier,
+        totalPrice
+      };
+    }
+
+    // Run initial calculation
+    calculatePrice();
+
+    // Store & Manage Bookings in localStorage
+    const BOOKINGS_KEY = 'easytravels_bookings';
+
+    function getBookings() {
+      const raw = localStorage.getItem(BOOKINGS_KEY);
+      if (raw) {
+        try {
+          return JSON.parse(raw);
+        } catch(e){}
+      }
+      // Initial Seed Data
+      const defaultBookings = [
+        {
+          id: 'BK-782194',
+          transportName: 'Car Rental',
+          transportType: 'car',
+          destinationName: 'Bhairahawa (Siddharthanagar)',
+          bookingDate: 'Tomorrow (09:00 AM)',
+          passengers: 2,
+          roundTrip: true,
+          totalPrice: 6180,
+          status: 'confirmed',
+          createdAt: new Date().toISOString()
+        },
+        {
+          id: 'BK-492015',
+          transportName: 'Bike Rental',
+          transportType: 'bike',
+          destinationName: 'Butwal City Center',
+          bookingDate: '28 Oct 2026',
+          passengers: 1,
+          roundTrip: false,
+          totalPrice: 500,
+          status: 'confirmed',
+          createdAt: new Date().toISOString()
+        }
+      ];
+      localStorage.setItem(BOOKINGS_KEY, JSON.stringify(defaultBookings));
+      return defaultBookings;
+    }
+
+    function saveBookings(bookings) {
+      localStorage.setItem(BOOKINGS_KEY, JSON.stringify(bookings));
+      renderBookings();
+    }
+
+    function renderBookings() {
+      const container = document.getElementById('bookingsList');
+      const badge = document.getElementById('bookingCountBadge');
+      const bookings = getBookings();
+
+      const activeCount = bookings.filter(b => b.status === 'confirmed').length;
+      badge.textContent = `${activeCount} Active`;
+
+      if (bookings.length === 0) {
+        container.innerHTML = `
+          <div class="no-bookings">
+            <i class="bx bx-calendar-x"></i>
+            <p>You have no travel bookings yet.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = '';
+      bookings.forEach(b => {
+        const item = document.createElement('div');
+        item.className = 'booking-item';
+
+        const isConfirmed = b.status === 'confirmed';
+        const statusClass = isConfirmed ? 'confirmed' : 'cancelled';
+        const statusLabel = isConfirmed ? 'Confirmed' : 'Cancelled';
+
+        item.innerHTML = `
+          <div class="booking-item-header">
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-tertiary); display: block; font-family: monospace;">${b.id}</span>
+              <div class="booking-item-title">${b.destinationName}</div>
+            </div>
+            <span class="booking-status ${statusClass}">${statusLabel}</span>
+          </div>
+
+          <div class="booking-item-details">
+            <span><i class="bx bx-car"></i> ${b.transportName}</span>
+            <span><i class="bx bx-calendar"></i> ${b.bookingDate}</span>
+            <span><i class="bx bx-user"></i> ${b.passengers} ${b.passengers > 1 ? 'Pax' : 'Pax'}</span>
+            <span><i class="bx bx-refresh"></i> ${b.roundTrip ? 'Round Trip' : 'One Way'}</span>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--neutral-200); padding-top: var(--space-3); margin-top: var(--space-3);">
+            <div class="booking-item-price">NPR ${Number(b.totalPrice).toLocaleString()}</div>
+            <div style="display: flex; gap: var(--space-2);">
+              <button class="btn btn-sm btn-secondary view-ticket-btn" data-id="${b.id}" style="padding: 4px 10px; font-size: 0.75rem;">
+                <i class="bx bx-qr-scan"></i> Ticket
+              </button>
+              ${isConfirmed ? `
+                <button class="booking-cancel-btn cancel-btn" data-id="${b.id}">
+                  Cancel
+                </button>
+              ` : ''}
+            </div>
+          </div>
+        `;
+
+        // Bind Ticket Modal Trigger
+        item.querySelector('.view-ticket-btn').addEventListener('click', () => {
+          openTicketModal(b);
+        });
+
+        // Bind Cancel Trigger
+        const cancelBtn = item.querySelector('.cancel-btn');
+        if (cancelBtn) {
+          cancelBtn.addEventListener('click', () => {
+            if (confirm(`Are you sure you want to cancel booking ${b.id}?`)) {
+              b.status = 'cancelled';
+              saveBookings(bookings);
+              if (window.showToast) window.showToast(`Booking ${b.id} cancelled.`, 'info');
+            }
+          });
+        }
+
+        container.appendChild(item);
+      });
+    }
+
+    // Modal Trigger
+    const modal = document.getElementById('ticketModal');
+    function openTicketModal(booking) {
+      document.getElementById('ticketBookingId').textContent = `Booking ID: ${booking.id}`;
+      document.getElementById('ticketDestination').textContent = booking.destinationName;
+      document.getElementById('ticketTransport').textContent = booking.transportName;
+      document.getElementById('ticketDatePax').textContent = `${booking.bookingDate} • ${booking.passengers} Pax`;
+      document.getElementById('ticketTripType').textContent = booking.roundTrip ? 'Round Trip (Included)' : 'One Way Trip';
+      document.getElementById('ticketTotalFare').textContent = `NPR ${Number(booking.totalPrice).toLocaleString()}`;
+
+      modal.style.display = 'flex';
+    }
+
+    document.getElementById('closeTicketModal').addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+
+    document.getElementById('printTicketBtn').addEventListener('click', () => {
+      window.print();
+    });
+
+    // Form Submission
+    document.getElementById('bookingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const priceData = calculatePrice();
+      const dateVal = document.getElementById('bookingDate').value;
+      const phoneVal = document.getElementById('bookingPhone').value;
+      const emailVal = document.getElementById('bookingEmail').value;
+      const notesVal = document.getElementById('bookingNotes').value;
+
+      const submitBtn = document.getElementById('confirmBookingBtn');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Confirming with Dispatch...';
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+
+        const newBooking = {
+          id: 'BK-' + Math.floor(100000 + Math.random() * 900000),
+          transportName: priceData.transportName,
+          transportType: priceData.transportType,
+          destinationName: priceData.destinationName,
+          bookingDate: dateVal,
+          passengers: priceData.passengers,
+          roundTrip: priceData.roundTrip,
+          totalPrice: priceData.totalPrice,
+          contactPhone: phoneVal,
+          email: emailVal,
+          specialRequests: notesVal,
+          status: 'confirmed',
+          createdAt: new Date().toISOString()
+        };
+
+        const currentBookings = getBookings();
+        currentBookings.unshift(newBooking);
+        saveBookings(currentBookings);
+
+        if (window.showToast) {
+          window.showToast(`Ride confirmed! Booking reference: ${newBooking.id}`, 'success');
+        }
+
+        // Open ticket modal immediately to show confirmation pass
+        openTicketModal(newBooking);
+      }, 700);
+    });
+
+    // Initial render
+    renderBookings();
+  </script>
+
+</body>
+</html>

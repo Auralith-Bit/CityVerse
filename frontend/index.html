@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CityVerse — Your gateway to Butwal & Bhairahawa tourism. Browse attractions, book transport, and plan your journey in Nepal.">
+  <title>CityVerse — Butwal & Bhairahawa Tourism</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader"></div>
+    <p class="loader-text">CityVerse</p>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="landing.html" class="nav-logo">
+        <div class="nav-logo-icon"><i class="bx bx-globe"></i></div>
+        <span>CityVerse</span>
+      </a>
+
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="places.html" class="nav-link">Attractions</a>
+        <a href="bookings.html" class="nav-link">Bookings</a>
+        <a href="nightlife.html" class="nav-link">Nightlife</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="bx bx-moon"></i>
+        </button>
+        <a href="login.html" class="nav-auth-btn nav-login-btn">Log In</a>
+        <a href="signup.html" class="nav-auth-btn nav-signup-btn">Sign Up</a>
+        <div class="nav-toggle" id="navToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ====== HERO SECTION ====== -->
+  <section class="hero" id="hero">
+    <img src="images/hero-lumbini.jpg" alt="Lumbini Sacred Garden" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-float-1"></div>
+    <div class="hero-float-2"></div>
+    <div class="hero-float-3"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <i class="bx bxs-plane-alt"></i>
+          Gateway to Butwal & Bhairahawa
+        </div>
+
+        <h1 class="hero-title">
+          Explore<br>
+          <span class="highlight">Butwal</span><br>
+          & Bhairahawa
+        </h1>
+
+        <p class="hero-description">
+          Your journey starts here. Discover vibrant cities,
+          local culture, and the best of Rupandehi, Nepal.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#places" class="btn btn-primary btn-lg">
+            <i class="bx bx-compass"></i>
+            Explore Places
+          </a>
+          <a href="bookings.html" class="btn btn-outline btn-lg" style="border-color: white; color: white;">
+            <i class="bx bx-calendar"></i>
+            Book Transport
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-number">10+</div>
+          <div class="hero-stat-label">Destinations</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">4</div>
+          <div class="hero-stat-label">Transport Types</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">5K+</div>
+          <div class="hero-stat-label">Happy Travelers</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-mouse"></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ====== ABOUT SECTION ====== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrapper reveal-left">
+          <img src="images/lumbini-aerial.jpg" alt="Aerial view of Lumbini" class="about-image">
+          <div class="about-image-accent"></div>
+          <div class="about-image-badge">
+            <i class="bx bxs-star"></i>
+            <div class="about-image-badge-text">
+              <strong>UNESCO</strong>
+              <span>World Heritage Site</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content reveal-right">
+          <span class="section-subtitle">About Us</span>
+          <h2 class="section-title">Your Gateway to Butwal & Bhairahawa</h2>
+          <p class="about-text">
+            CityVerse brings you the authentic experience of Butwal and Bhairahawa (Siddharthanagar).
+            Located in Rupandehi, Nepal, these vibrant cities offer a blend of culture,
+            commerce, and modern amenities.
+          </p>
+
+          <div class="about-features">
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                <i class="bx bx-map-pin"></i>
+              </div>
+              <div>
+                <h4>Curated Attractions</h4>
+                <p>Hand-picked sacred & natural sites</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                <i class="bx bx-car"></i>
+              </div>
+              <div>
+                <h4>Easy Booking</h4>
+                <p>Seamless transport reservation</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                <i class="bx bx-shield-quarter"></i>
+              </div>
+              <div>
+                <h4>Safe Travel</h4>
+                <p>Trusted local operators</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                <i class="bx bx-dollar-circle"></i>
+              </div>
+              <div>
+                <h4>Best Prices</h4>
+                <p>Dynamic & transparent pricing</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="#places" class="btn btn-primary">
+            <i class="bx bx-right-arrow-alt"></i>
+            Discover Places
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PLACES / ATTRACTIONS ====== -->
+  <section class="section" id="places" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle">Explore</span>
+        <h2 class="section-title">Popular Attractions</h2>
+        <p class="section-description">
+          Discover the best attractions in Butwal and Bhairahawa.
+        </p>
+      </div>
+
+      <!-- Filters -->
+      <div class="places-filter reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="urban">Urban</button>
+        <button class="filter-btn" data-filter="religious">Religious</button>
+        <button class="filter-btn" data-filter="nature">Nature</button>
+        <button class="filter-btn" data-filter="recreation">Recreation</button>
+        <button class="filter-btn" data-filter="cultural">Cultural</button>
+      </div>
+
+      <!-- Places Grid -->
+        <div class="places-grid" id="placesGrid">
+
+          <!-- Butwal City Center -->
+          <div class="place-card reveal delay-1" data-category="urban">
+            <div class="place-card-image">
+              <img src="images/lumbini-aerial.jpg" alt="Butwal City Center">
+              <div class="place-card-overlay"></div>
+              <span class="place-card-category">Urban</span>
+              <span class="place-card-distance"><i class="bx bx-walk"></i> 0 km</span>
+            </div>
+            <div class="place-card-body">
+              <h3 class="place-card-title">Butwal City Center</h3>
+              <p class="place-card-desc">
+                The heart of Butwal with bustling markets, shops, restaurants,
+                and vibrant city life.
+              </p>
+              <div class="place-card-meta">
+                <div class="place-card-rating">
+                  <div class="stars">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star-half"></i>
+                  </div>
+                  <span>(2,847 reviews)</span>
+                </div>
+                <a href="bookings.html" class="place-card-action">
+                  Book Ride <i class="bx bx-right-arrow-alt"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bhairahawa -->
+          <div class="place-card reveal delay-2" data-category="urban">
+            <div class="place-card-image">
+              <img src="images/airport.jpg" alt="Bhairahawa">
+              <div class="place-card-overlay"></div>
+              <span class="place-card-category">Urban</span>
+              <span class="place-card-distance"><i class="bx bx-walk"></i> 5 km</span>
+            </div>
+            <div class="place-card-body">
+              <h3 class="place-card-title">Bhairahawa (Siddharthanagar)</h3>
+              <p class="place-card-desc">
+                A bustling border city with great shopping, dining options,
+                and easy access to India.
+              </p>
+              <div class="place-card-meta">
+                <div class="place-card-rating">
+                  <div class="stars">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star empty"></i>
+                  </div>
+                  <span>(1,204 reviews)</span>
+                </div>
+                <a href="bookings.html" class="place-card-action">
+                  Book Ride <i class="bx bx-right-arrow-alt"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Manimukunda Park -->
+          <div class="place-card reveal delay-3" data-category="recreation">
+            <div class="place-card-image">
+              <img src="images/tiger-resort.jpg" alt="Manimukunda Park">
+              <div class="place-card-overlay"></div>
+              <span class="place-card-category">Recreation</span>
+              <span class="place-card-distance"><i class="bx bx-walk"></i> 2 km</span>
+            </div>
+            <div class="place-card-body">
+              <h3 class="place-card-title">Manimukunda Park</h3>
+              <p class="place-card-desc">
+                A popular recreational spot in Butwal with gardens,
+                walking trails, and family-friendly activities.
+              </p>
+              <div class="place-card-meta">
+                <div class="place-card-rating">
+                  <div class="stars">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star-half"></i>
+                  </div>
+                  <span>(985 reviews)</span>
+                </div>
+                <a href="bookings.html" class="place-card-action">
+                  Book Ride <i class="bx bx-right-arrow-alt"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Butwal Hill Park -->
+          <div class="place-card reveal delay-1" data-category="nature">
+            <div class="place-card-image">
+              <img src="images/suspension-bridge.jpg" alt="Butwal Hill Park">
+              <div class="place-card-overlay"></div>
+              <span class="place-card-category">Nature</span>
+              <span class="place-card-distance"><i class="bx bx-walk"></i> 3 km</span>
+            </div>
+            <div class="place-card-body">
+              <h3 class="place-card-title">Butwal Hill Park</h3>
+              <p class="place-card-desc">
+                Scenic hill park offering panoramic views of Butwal city
+                and surrounding areas.
+              </p>
+              <div class="place-card-meta">
+                <div class="place-card-rating">
+                  <div class="stars">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star empty"></i>
+                  </div>
+                  <span>(1,562 reviews)</span>
+                </div>
+                <a href="bookings.html" class="place-card-action">
+                  Book Ride <i class="bx bx-right-arrow-alt"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Devdaha -->
+          <div class="place-card reveal delay-2" data-category="religious">
+            <div class="place-card-image">
+              <img src="images/siddha-baba.jpg" alt="Devdaha">
+              <div class="place-card-overlay"></div>
+              <span class="place-card-category">Religious</span>
+              <span class="place-card-distance"><i class="bx bx-walk"></i> 12 km</span>
+            </div>
+            <div class="place-card-body">
+              <h3 class="place-card-title">Devdaha</h3>
+              <p class="place-card-desc">
+                Historical site believed to be the maternal home of Queen Maya Devi.
+                Rich in Buddhist heritage and significance.
+              </p>
+              <div class="place-card-meta">
+                <div class="place-card-rating">
+                  <div class="stars">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                  </div>
+                  <span>(2,103 reviews)</span>
+                </div>
+                <a href="bookings.html" class="place-card-action">
+                  Book Ride <i class="bx bx-right-arrow-alt"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Buddha Park -->
+          <div class="place-card reveal delay-3" data-category="recreation">
+            <div class="place-card-image">
+              <img src="images/tiger-resort.jpg" alt="Buddha Park">
+              <div class="place-card-overlay"></div>
+              <span class="place-card-category">Recreation</span>
+              <span class="place-card-distance"><i class="bx bx-walk"></i> 7 km</span>
+            </div>
+            <div class="place-card-body">
+              <h3 class="place-card-title">Buddha Park</h3>
+              <p class="place-card-desc">
+                Peaceful park with a beautiful Buddha statue, gardens,
+                and walking paths perfect for relaxation.
+              </p>
+              <div class="place-card-meta">
+                <div class="place-card-rating">
+                  <div class="stars">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star empty"></i>
+                  </div>
+                  <span>(876 reviews)</span>
+                </div>
+                <a href="bookings.html" class="place-card-action">
+                  Book Ride <i class="bx bx-right-arrow-alt"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TRANSPORT SECTION ====== -->
+  <section class="section" id="transport">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle">Getting Around</span>
+        <h2 class="section-title">Transportation Options</h2>
+        <p class="section-description">
+          Choose from our range of transport options to explore Butwal and
+          Bhairahawa comfortably and affordably.
+        </p>
+      </div>
+
+      <div class="transport-grid">
+        <div class="transport-card reveal delay-1">
+          <div class="transport-icon">
+            <i class="bx bx-cycling"></i>
+          </div>
+          <h3>Bike Rental</h3>
+          <p>Freedom to explore at your own pace. Perfect for short distances and local sightseeing.</p>
+          <div class="transport-price">
+            NPR 500 <span>/ base fare</span>
+          </div>
+          <div style="margin-top: var(--space-4);">
+            <a href="bookings.html" class="btn btn-primary btn-sm">
+              <i class="bx bx-right-arrow-alt"></i> Book Now
+            </a>
+          </div>
+        </div>
+
+        <div class="transport-card reveal delay-2">
+          <div class="transport-icon">
+            <i class="bx bx-bus"></i>
+          </div>
+          <h3>Bus Service</h3>
+          <p>Affordable group travel to all major destinations. Regular schedules with comfortable seating.</p>
+          <div class="transport-price">
+            NPR 100 <span>/ base fare</span>
+          </div>
+          <div style="margin-top: var(--space-4);">
+            <a href="bookings.html" class="btn btn-primary btn-sm">
+              <i class="bx bx-right-arrow-alt"></i> Book Now
+            </a>
+          </div>
+        </div>
+
+        <div class="transport-card reveal delay-3">
+          <div class="transport-icon">
+            <i class="bx bx-car"></i>
+          </div>
+          <h3>Car Rental</h3>
+          <p>Premium private transport with experienced drivers. Ideal for families and groups.</p>
+          <div class="transport-price">
+            NPR 3,000 <span>/ base fare</span>
+          </div>
+          <div style="margin-top: var(--space-4);">
+            <a href="bookings.html" class="btn btn-primary btn-sm">
+              <i class="bx bx-right-arrow-alt"></i> Book Now
+            </a>
+          </div>
+        </div>
+
+        <div class="transport-card reveal delay-4">
+          <div class="transport-icon">
+            <i class="bx bx-taxi"></i>
+          </div>
+          <h3>E-Rickshaw</h3>
+          <p>Eco-friendly city rides. Quiet, clean, and perfect for short hops around town.</p>
+          <div class="transport-price">
+            NPR 150 <span>/ base fare</span>
+          </div>
+          <div style="margin-top: var(--space-4);">
+            <a href="bookings.html" class="btn btn-primary btn-sm">
+              <i class="bx bx-right-arrow-alt"></i> Book Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TESTIMONIALS ====== -->
+  <section class="section" id="testimonials" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle">Testimonials</span>
+        <h2 class="section-title">What Travelers Say</h2>
+        <p class="section-description">
+          Hear from fellow explorers who have experienced Butwal and Bhairahawa.
+        </p>
+      </div>
+
+      <div class="testimonials-wrapper reveal">
+        <div class="testimonials-track" id="testimonialsTrack">
+
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">
+            Visiting Butwal was a great experience. The city has a lot to offer,
+            and CityVerse made the logistics so smooth!
+          </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">SK</div>
+              <div>
+                <div class="testimonial-name">Sarah Kim</div>
+                <div class="testimonial-location">Seoul, South Korea</div>
+              </div>
+            </div>
+          </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">
+            The transport booking system is fantastic. We booked a car between Butwal and Bhairahawa
+            and the driver was great. Great value for money!
+          </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">MJ</div>
+              <div>
+                <div class="testimonial-name">Mark Johnson</div>
+                <div class="testimonial-location">London, UK</div>
+              </div>
+            </div>
+          </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">
+            Great experience exploring both cities. Easy to navigate and very convenient.
+          </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">AP</div>
+              <div>
+                <div class="testimonial-name">Amara Patel</div>
+                <div class="testimonial-location">Bangkok, Thailand</div>
+              </div>
+            </div>
+          </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">
+            The hotels in Butwal were great. Comfortable stay and excellent service. Will definitely return.
+          </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">RL</div>
+              <div>
+                <div class="testimonial-name">Rachel Lee</div>
+                <div class="testimonial-location">Sydney, Australia</div>
+              </div>
+            </div>
+          </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">
+            Great service and very convenient booking. Highly recommend CityVerse!
+          </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">DM</div>
+              <div>
+                <div class="testimonial-name">David Mueller</div>
+                <div class="testimonial-location">Berlin, Germany</div>
+              </div>
+            </div>
+          </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">
+            Nepal surprised me with its warmth. CityVerse made everything easy!
+          </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">YT</div>
+              <div>
+                <div class="testimonial-name">Yuki Tanaka</div>
+                <div class="testimonial-location">Tokyo, Japan</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="testimonials-nav">
+        <button id="prevTestimonial" aria-label="Previous testimonial"><i class="bx bx-chevron-left"></i></button>
+        <button id="nextTestimonial" aria-label="Next testimonial"><i class="bx bx-chevron-right"></i></button>
+      </div>
+      <div class="testimonials-dots" id="testimonialDots"></div>
+    </div>
+  </section>
+
+  <!-- ====== CTA BANNER ====== -->
+  <section class="cta-banner">
+    <div class="cta-banner-bg"></div>
+    <div class="cta-shapes">
+      <div class="cta-shape cta-shape-1"></div>
+      <div class="cta-shape cta-shape-2"></div>
+      <div class="cta-shape cta-shape-3"></div>
+    </div>
+    <div class="container">
+      <div class="cta-banner-content reveal">
+        <h2>Ready for Your Journey?</h2>
+        <p>
+          Start planning your trip to Butwal & Bhairahawa today. Book transport,
+          explore attractions, and create memories that last a lifetime.
+        </p>
+        <a href="bookings.html" class="btn btn-white btn-lg">
+          <i class="bx bx-calendar-check"></i>
+          Start Booking
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONTACT SECTION ====== -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle">Get in Touch</span>
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-description">
+          Have questions about your trip? We're here to help you plan the perfect
+          Butwal & Bhairahawa experience.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="reveal-left">
+          <div class="contact-info-cards">
+            <div class="contact-info-card">
+              <div class="contact-info-icon">
+                <i class="bx bx-map"></i>
+              </div>
+              <div>
+                <h4>Our Location</h4>
+                <p>Siddharthanagar-1, Bhairahawa<br>Rupandehi, Nepal</p>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="contact-info-icon">
+                <i class="bx bx-phone"></i>
+              </div>
+              <div>
+                <h4>Phone Number</h4>
+                <p>+977-71-520000<br>+977-9800000000</p>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="contact-info-icon">
+                <i class="bx bx-envelope"></i>
+              </div>
+              <div>
+                <h4>Email Address</h4>
+                <p>info@easytravels.com.np<br>support@easytravels.com.np</p>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="contact-info-icon">
+                <i class="bx bx-time"></i>
+              </div>
+              <div>
+                <h4>Business Hours</h4>
+                <p>Sun — Fri: 7:00 AM — 8:00 PM<br>Saturday: 8:00 AM — 5:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper reveal-right">
+          <h3>Send Us a Message</h3>
+          <p>We'll get back to you within 24 hours.</p>
+
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="contactName">Full Name</label>
+                <input type="text" class="form-input" id="contactName" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contactEmail">Email</label>
+                <input type="email" class="form-input" id="contactEmail" placeholder="you@email.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactSubject">Subject</label>
+              <input type="text" class="form-input" id="contactSubject" placeholder="How can we help?">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactMessage">Message</label>
+              <textarea class="form-input" id="contactMessage" placeholder="Tell us about your travel plans..." rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+              <i class="bx bx-send"></i>
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <div class="footer-logo-icon"><i class="bx bx-globe"></i></div>
+              <span>CityVerse</span>
+            </div>
+            <p>
+              Your trusted companion for exploring Butwal & Bhairahawa.
+              We make travel easy, affordable, and unforgettable.
+            </p>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" aria-label="Twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" aria-label="YouTube"><i class="bx bxl-youtube"></i></a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="#places">Attractions</a></li>
+              <li><a href="#transport">Transport</a></li>
+              <li><a href="bookings.html">Bookings</a></li>
+              <li><a href="nightlife.html">Nightlife</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Explore</h4>
+            <ul class="footer-links">
+              <li><a href="#">Butwal City Center</a></li>
+              <li><a href="#">Bhairahawa</a></li>
+              <li><a href="#">Manimukunda Park</a></li>
+              <li><a href="#">Butwal Hill Park</a></li>
+              <li><a href="#">Devdaha</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Newsletter</h4>
+            <p class="footer-newsletter-text" style="color: var(--neutral-500); font-size: var(--font-size-sm); margin-bottom: var(--space-4);">
+              Subscribe for travel tips, deals, and updates about Butwal & Bhairahawa.
+            </p>
+            <form class="footer-newsletter-form" id="newsletterForm">
+              <input type="email" placeholder="Enter your email" required>
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 CityVerse. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/authClient.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/darkMode.js"></script>
+  <script src="js/places.js"></script>
+  <script src="js/testimonials.js"></script>
+
+</body>
+</html>

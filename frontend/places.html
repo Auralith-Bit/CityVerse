@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore top attractions, sacred temples, natural wonders, and cultural gems in Bhairahawa and Lumbini, Nepal with EasyTravels.">
+  <title>Attractions Directory — EasyTravels</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .places-hero {
+      padding-top: calc(var(--header-height) + var(--space-12));
+      padding-bottom: var(--space-12);
+      background: linear-gradient(135deg, var(--primary-700), var(--primary-500));
+      color: white;
+      text-align: center;
+    }
+    .places-hero h1 {
+      font-size: var(--font-size-4xl);
+      color: white;
+      margin-bottom: var(--space-3);
+    }
+    .places-hero p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: var(--font-size-lg);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+    .search-filter-bar {
+      margin-top: calc(-1 * var(--space-8));
+      background: var(--bg-card);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-5) var(--space-6);
+      box-shadow: var(--shadow-xl);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      align-items: center;
+      justify-content: space-between;
+    }
+    [data-theme="dark"] .search-filter-bar {
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+    .places-search-box {
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+    }
+    .places-search-box input {
+      width: 100%;
+      padding: 12px 16px 12px 42px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-xl);
+      font-size: var(--font-size-sm);
+      color: var(--text-primary);
+      outline: none;
+      transition: all 0.2s;
+    }
+    .places-search-box input:focus {
+      border-color: var(--primary-500);
+    }
+    .places-search-box i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-tertiary);
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader"></div>
+    <p class="loader-text">EasyTravels</p>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="landing.html" class="nav-logo">
+        <div class="nav-logo-icon"><i class="bx bx-globe"></i></div>
+        <span>EasyTravels</span>
+      </a>
+
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="places.html" class="nav-link active">Attractions</a>
+        <a href="index.html#transport" class="nav-link">Transport</a>
+        <a href="bookings.html" class="nav-link">Bookings</a>
+        <a href="nightlife.html" class="nav-link">Nightlife</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="bx bx-moon"></i>
+        </button>
+        <a href="login.html" class="nav-auth-btn nav-login-btn">Log In</a>
+        <a href="signup.html" class="nav-auth-btn nav-signup-btn">Sign Up</a>
+        <div class="nav-toggle" id="navToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Places Hero -->
+  <section class="places-hero">
+    <div class="container">
+      <span style="display: inline-block; padding: 6px 16px; background: rgba(255,255,255,0.15); border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: var(--space-3);">
+        <i class="bx bxs-compass"></i> Curated Destinations
+      </span>
+      <h1>Explore Bhairahawa & Lumbini</h1>
+      <p>
+        Discover ancient monasteries, sacred meditation gardens, dramatic suspension bridges, and Himalayan foothill adventures.
+      </p>
+    </div>
+  </section>
+
+  <!-- Search & Filter Controls -->
+  <div class="container" style="position: relative; z-index: 5;">
+    <div class="search-filter-bar">
+      <div class="places-search-box">
+        <i class="bx bx-search"></i>
+        <input type="text" id="placeSearchInput" placeholder="Search attraction by name or location (e.g. Lumbini, Tiger Resort)...">
+      </div>
+      <div class="places-filter" style="margin-bottom: 0;">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="religious">Religious</button>
+        <button class="filter-btn" data-filter="nature">Nature</button>
+        <button class="filter-btn" data-filter="recreation">Recreation</button>
+        <button class="filter-btn" data-filter="cultural">Cultural</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Places Grid Section -->
+  <section class="section" style="background: var(--bg-secondary); padding-top: var(--space-12);">
+    <div class="container">
+      <div class="places-grid" id="placesGrid">
+
+        <!-- 1. Lumbini Sacred Garden -->
+        <div class="place-card reveal delay-1" data-category="religious">
+          <div class="place-card-image">
+            <img src="images/lumbini-aerial.jpg" alt="Lumbini Sacred Garden">
+            <div class="place-card-overlay"></div>
+            <span class="place-card-category">Religious</span>
+            <span class="place-card-distance"><i class="bx bx-map-pin"></i> 27 km from Bhairahawa</span>
+          </div>
+          <div class="place-card-body">
+            <h3 class="place-card-title">Lumbini Sacred Garden</h3>
+            <p class="place-card-desc">
+              Birthplace of Lord Buddha. Features the holy Maya Devi Temple, sacred Pushkarini pond, Ashoka Pillar (249 BCE), and over 25 international Buddhist monasteries.
+            </p>
+            <div class="place-card-meta">
+              <div class="place-card-rating">
+                <div class="stars">
+                  <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star-half"></i>
+                </div>
+                <span>(2,847 reviews)</span>
+              </div>
+              <a href="bookings.html?destination=lumbini" class="place-card-action">
+                Book Ride <i class="bx bx-right-arrow-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Gautam Buddha International Airport -->
+        <div class="place-card reveal delay-2" data-category="cultural">
+          <div class="place-card-image">
+            <img src="images/airport.jpg" alt="Gautam Buddha International Airport">
+            <div class="place-card-overlay"></div>
+            <span class="place-card-category">Cultural</span>
+            <span class="place-card-distance"><i class="bx bx-map-pin"></i> 5 km from Center</span>
+          </div>
+          <div class="place-card-body">
+            <h3 class="place-card-title">Gautam Buddha Int'l Airport</h3>
+            <p class="place-card-desc">
+              Nepal's second international airport connecting pilgrims and adventurers from around the world straight into the Terai and Lumbini region.
+            </p>
+            <div class="place-card-meta">
+              <div class="place-card-rating">
+                <div class="stars">
+                  <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bx-star empty"></i>
+                </div>
+                <span>(1,204 reviews)</span>
+              </div>
+              <a href="bookings.html?destination=lumbini" class="place-card-action">
+                Book Airport Transfer <i class="bx bx-right-arrow-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Tiger Resort (Daunne) -->
+        <div class="place-card reveal delay-3" data-category="recreation">
+          <div class="place-card-image">
+            <img src="images/tiger-resort.jpg" alt="Tiger Resort Daunne">
+            <div class="place-card-overlay"></div>
+            <span class="place-card-category">Recreation</span>
+            <span class="place-card-distance"><i class="bx bx-map-pin"></i> 35 km</span>
+          </div>
+          <div class="place-card-body">
+            <h3 class="place-card-title">Tiger Resort (Daunne)</h3>
+            <p class="place-card-desc">
+              A serene hillside retreat nestled along the lush green ridges of Daunne. Features infinity swimming pools, traditional architecture, and mountain breeze.
+            </p>
+            <div class="place-card-meta">
+              <div class="place-card-rating">
+                <div class="stars">
+                  <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+                </div>
+                <span>(956 reviews)</span>
+              </div>
+              <a href="bookings.html?destination=tiger-resort" class="place-card-action">
+                Book Ride <i class="bx bx-right-arrow-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Siddha Baba Mandir -->
+        <div class="place-card reveal delay-1" data-category="religious">
+          <div class="place-card-image">
+            <img src="images/siddha-baba.jpg" alt="Siddha Baba Mandir">
+            <div class="place-card-overlay"></div>
+            <span class="place-card-category">Religious</span>
+            <span class="place-card-distance"><i class="bx bx-map-pin"></i> 25 km</span>
+          </div>
+          <div class="place-card-body">
+            <h3 class="place-card-title">Siddha Baba Mandir</h3>
+            <p class="place-card-desc">
+              Perched dramatically along the cliffside of Siddhartha Highway. A holy shrine dedicated to Lord Shiva where travelers pray for protection and safe mountain journeys.
+            </p>
+            <div class="place-card-meta">
+              <div class="place-card-rating">
+                <div class="stars">
+                  <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star-half"></i>
+                </div>
+                <span>(1,643 reviews)</span>
+              </div>
+              <a href="bookings.html?destination=siddha-baba" class="place-card-action">
+                Book Ride <i class="bx bx-right-arrow-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Baglung Suspension Bridge -->
+        <div class="place-card reveal delay-2" data-category="nature">
+          <div class="place-card-image">
+            <img src="images/suspension-bridge.jpg" alt="Baglung Suspension Bridge">
+            <div class="place-card-overlay"></div>
+            <span class="place-card-category">Nature</span>
+            <span class="place-card-distance"><i class="bx bx-map-pin"></i> 120 km</span>
+          </div>
+          <div class="place-card-body">
+            <h3 class="place-card-title">Baglung Suspension Bridge</h3>
+            <p class="place-card-desc">
+              One of Nepal's engineering marvels spanning a deep river canyon with crystal-clear turquoise waters below. Unmatched mountain vistas for adventure lovers.
+            </p>
+            <div class="place-card-meta">
+              <div class="place-card-rating">
+                <div class="stars">
+                  <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+                </div>
+                <span>(2,103 reviews)</span>
+              </div>
+              <a href="bookings.html?destination=baglung-bridge" class="place-card-action">
+                Book Ride <i class="bx bx-right-arrow-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Lumbini Cable Car -->
+        <div class="place-card reveal delay-3" data-category="recreation">
+          <div class="place-card-image">
+            <img src="images/tiger-resort.jpg" alt="Lumbini Cable Car">
+            <div class="place-card-overlay"></div>
+            <span class="place-card-category">Recreation</span>
+            <span class="place-card-distance"><i class="bx bx-map-pin"></i> 20 km</span>
+          </div>
+          <div class="place-card-body">
+            <h3 class="place-card-title">Lumbini Cable Car</h3>
+            <p class="place-card-desc">
+              Glide above the verdant Himalayan foothills on this modern gondola ride. Unrivaled panoramic views of the terai plains and hilltop viewpoints.
+            </p>
+            <div class="place-card-meta">
+              <div class="place-card-rating">
+                <div class="stars">
+                  <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bx-star empty"></i>
+                </div>
+                <span>(876 reviews)</span>
+              </div>
+              <a href="bookings.html?destination=cable-car" class="place-card-action">
+                Book Ride <i class="bx bx-right-arrow-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Nuwakot Viewpoint Fort -->
+        <div class="place-card reveal delay-1" data-category="cultural">
+          <div class="place-card-image">
+            <img src="images/hero-lumbini.jpg" alt="Nuwakot Viewpoint">
+            <div class="place-card-overlay"></div>
+            <span class="place-card-category">Cultural</span>
+            <span class="place-card-distance"><i class="bx bx-map-pin"></i> 8 km</span>
+          </div>
+          <div class="place-card-body">
+            <h3 class="place-card-title">Nuwakot Viewpoint & Fort</h3>
+            <p class="place-card-desc">
+              Historic hill summit fortification offering picturesque sunset vistas overlooking Siddharthanagar, winding rivers, and traditional agrarian villages.
+            </p>
+            <div class="place-card-meta">
+              <div class="place-card-rating">
+                <div class="stars">
+                  <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star-half"></i>
+                </div>
+                <span>(642 reviews)</span>
+              </div>
+              <a href="bookings.html?destination=nuwakot" class="place-card-action">
+                Book Ride <i class="bx bx-right-arrow-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Daunne Hill Pass -->
+        <div class="place-card reveal delay-2" data-category="nature">
+          <div class="place-card-image">
+            <img src="images/siddha-baba.jpg" alt="Daunne Hill Pass">
+            <div class="place-card-overlay"></div>
+            <span class="place-card-category">Nature</span>
+            <span class="place-card-distance"><i class="bx bx-map-pin"></i> 30 km</span>
+          </div>
+          <div class="place-card-body">
+            <h3 class="place-card-title">Daunne Hill Pass & Forest</h3>
+            <p class="place-card-desc">
+              A winding, scenic highway pass through dense sal forests and mist-covered mountains, filled with fresh roadside tea stalls and viewpoint shrines.
+            </p>
+            <div class="place-card-meta">
+              <div class="place-card-rating">
+                <div class="stars">
+                  <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bx-star empty"></i>
+                </div>
+                <span>(518 reviews)</span>
+              </div>
+              <a href="bookings.html?destination=daunne" class="place-card-action">
+                Book Ride <i class="bx bx-right-arrow-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <div class="footer-logo-icon"><i class="bx bx-globe"></i></div>
+              <span>EasyTravels</span>
+            </div>
+            <p>
+              Your trusted companion for exploring Bhairahawa & Lumbini.
+              We make travel easy, affordable, and unforgettable in Nepal's
+              most sacred region.
+            </p>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" aria-label="Instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" aria-label="Twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" aria-label="YouTube"><i class="bx bxl-youtube"></i></a>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="places.html">Attractions</a></li>
+              <li><a href="index.html#transport">Transport</a></li>
+              <li><a href="bookings.html">Bookings</a></li>
+              <li><a href="nightlife.html">Nightlife</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Explore</h4>
+            <ul class="footer-links">
+              <li><a href="bookings.html?destination=lumbini">Lumbini</a></li>
+              <li><a href="bookings.html?destination=tiger-resort">Tiger Resort</a></li>
+              <li><a href="bookings.html?destination=siddha-baba">Siddha Baba</a></li>
+              <li><a href="bookings.html?destination=cable-car">Cable Car</a></li>
+              <li><a href="bookings.html?destination=baglung-bridge">Suspension Bridge</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-heading">Newsletter</h4>
+            <p class="footer-newsletter-text" style="color: var(--neutral-500); font-size: var(--font-size-sm); margin-bottom: var(--space-4);">
+              Subscribe for travel tips, deals, and updates about Bhairahawa & Lumbini.
+            </p>
+            <form class="footer-newsletter-form" id="newsletterForm">
+              <input type="email" placeholder="Enter your email" required>
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 EasyTravels. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/authClient.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/darkMode.js"></script>
+  <script src="js/places.js"></script>
+  <script>
+    // Live Search input filter
+    const searchInput = document.getElementById('placeSearchInput');
+    const cards = document.querySelectorAll('.places-grid .place-card');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const val = e.target.value.toLowerCase().trim();
+        cards.forEach((card) => {
+          const title = card.querySelector('.place-card-title').textContent.toLowerCase();
+          const desc = card.querySelector('.place-card-desc').textContent.toLowerCase();
+          if (title.includes(val) || desc.includes(val)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>
