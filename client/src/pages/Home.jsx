@@ -21,52 +21,52 @@ const testimonials = [
     name: 'Sarah Kim',
     location: 'Seoul, South Korea',
     initials: 'SK',
-    text: 'CityVerse made exploring Nepal so easy. We discovered hidden gems in cities we never knew existed!',
+    text: 'CityVerse made exploring Nepal so straightforward. We found reliable details on destinations across the country.',
   },
   {
     name: 'Mark Johnson',
     location: 'London, UK',
     initials: 'MJ',
-    text: 'From Butwal to Pokhara, CityVerse helped us plan the perfect multi-city trip across Nepal — great value!',
+    text: 'From Butwal to Pokhara, CityVerse helped us plan our route and city visits with total confidence.',
   },
   {
     name: 'Amara Patel',
     location: 'Bangkok, Thailand',
     initials: 'AP',
-    text: 'Great experience exploring Nepal\'s cities. Easy to navigate and very convenient for trip planning.',
+    text: 'A clean and practical resource for discovering attractions, transport options, and local spots in Nepal.',
   },
   {
     name: 'Rachel Lee',
     location: 'Sydney, Australia',
     initials: 'RL',
-    text: 'Nepal has so much beyond the mountains. CityVerse helped us discover the vibrant city life and local culture.',
+    text: 'Great practical information on city culture, points of interest, and regional travel tips.',
   },
   {
     name: 'David Mueller',
     location: 'Berlin, Germany',
     initials: 'DM',
-    text: 'Clear guides and very convenient planning for any city in Nepal. Highly recommend CityVerse!',
+    text: 'Clear destination details and accurate info. Made city hopping in Nepal hassle-free.',
   },
   {
     name: 'Yuki Tanaka',
     location: 'Tokyo, Japan',
     initials: 'YT',
-    text: 'Nepal surprised me with its warmth and diversity. CityVerse made everything easy!',
+    text: 'Warm hospitality and beautiful places. CityVerse gave us great guidance on each city we visited.',
   },
 ];
 
 const features = [
-  { icon: 'bx bx-map-pin', title: 'Curated Attractions', text: 'Hand-picked spots across Nepal\'s cities' },
-  { icon: 'bx bx-compass', title: 'Local Insights', text: 'Know what to see and where to go' },
-  { icon: 'bx bx-shield-quarter', title: 'Trusted Information', text: 'Accurate, up-to-date destination details' },
-  { icon: 'bx bx-dollar-circle', title: 'Free to Explore', text: 'Open guides for every traveler' },
+  { icon: 'bx bx-map-pin', title: 'Curated Attractions', text: 'Verified spots and points of interest across Nepal.' },
+  { icon: 'bx bx-compass', title: 'Local Insights', text: 'Practical guidance on timing, transit, and culture.' },
+  { icon: 'bx bx-check-shield', title: 'Reliable Details', text: 'Accurate, up-to-date travel information.' },
+  { icon: 'bx bx-book-open', title: 'Free & Accessible', text: 'Open destination guides for every traveler.' },
 ];
 
 const transport = [
-  { icon: 'bx bx-cycling', title: 'Bike Rental', text: 'Freedom to explore at your own pace. Perfect for short distances and local sightseeing.', price: 'NPR 500' },
-  { icon: 'bx bx-bus', title: 'Bus Service', text: 'Affordable group travel to all major destinations. Regular schedules.', price: 'NPR 100' },
-  { icon: 'bx bx-car', title: 'Car Rental', text: 'Premium private transport with experienced drivers. Ideal for families.', price: 'NPR 3,000' },
-  { icon: 'bx bx-taxi', title: 'E-Rickshaw', text: 'Eco-friendly city rides. Quiet, clean and perfect for short hops.', price: 'NPR 150' },
+  { icon: 'bx bx-cycling', title: 'Bicycle & Scooter', text: 'Ideal for local neighborhood exploring and daily commute.', price: 'NPR 500' },
+  { icon: 'bx bx-bus', title: 'Local & Express Bus', text: 'Budget-friendly travel connecting major city hubs and stops.', price: 'NPR 100' },
+  { icon: 'bx bx-car', title: 'Car & Taxi Hire', text: 'Comfortable private transport suitable for day trips and family.', price: 'NPR 3,000' },
+  { icon: 'bx bx-trip', title: 'Local Rickshaw', text: 'Convenient zero-hassle rides for short trips within town.', price: 'NPR 150' },
 ];
 
 function CitySearch() {
@@ -106,10 +106,10 @@ function CitySearch() {
   return (
     <form className="hero-search" ref={ref} onSubmit={handleSubmit} autoComplete="off">
       <div className="hero-search-input-wrapper">
-        <i className="bx bx-search" />
+        <i className="bx bx-search hero-search-icon" />
         <input
           type="text"
-          placeholder="Search cities, attractions, places…"
+          placeholder="Search cities (e.g. Kathmandu, Butwal, Pokhara)..."
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
@@ -118,7 +118,7 @@ function CitySearch() {
           onFocus={() => query.trim() && setOpen(true)}
         />
         <button type="submit" className="hero-search-btn">
-          Explore
+          Search
         </button>
       </div>
       {open && filtered.length > 0 && (
@@ -127,7 +127,7 @@ function CitySearch() {
             <li key={city}>
               <button type="button" onClick={() => handleSelect(city)}>
                 <i className="bx bx-map-pin" />
-                {city}
+                <span>{city}</span>
               </button>
             </li>
           ))}
@@ -152,30 +152,25 @@ export default function Home() {
   return (
     <>
       <section className="hero" id="hero">
-        <img src="/images/places/butwal-city-center-1.jpg" alt="Nepal cityscape" className="hero-bg" />
+        <img src="/images/hero-lumbini.jpg" alt="Nepal landscape" className="hero-bg" />
         <div className="hero-overlay" />
-        <div className="hero-float-1" />
-        <div className="hero-float-2" />
-        <div className="hero-float-3" />
 
-        <div className="container">
+        <div className="container hero-container">
           <div className="hero-content">
             <div className="hero-tag">
-              <i className="bx bxs-plane-alt" />
-              Discover Every City in Nepal
+              <i className="bx bx-map" />
+              Nepal Travel & City Guide
             </div>
 
             <h1 className="hero-title">
-              Explore
-              <br />
-              <span className="highlight">Nepal</span>,
+              Explore <span className="highlight">Nepal</span>,
               <br />
               City by City
             </h1>
 
             <p className="hero-description">
-              Your journey starts here. Discover vibrant cities, rich culture and hidden
-              gems across Nepal — from the Terai plains to the Himalayan foothills.
+              Find iconic landmarks, quiet heritage sites, local transport, and city highlights
+              all in one reliable place.
             </p>
 
             <CitySearch />
@@ -183,15 +178,10 @@ export default function Home() {
             <div className="hero-cta">
               <Link to="/places" className="btn btn-primary btn-lg">
                 <i className="bx bx-compass" />
-                Explore All Places
+                Browse Attractions
               </Link>
-              <Link
-                to="/about"
-                className="btn btn-outline btn-lg"
-                style={{ borderColor: 'white', color: 'white' }}
-              >
-                <i className="bx bx-info-circle" />
-                Learn More
+              <Link to="/about" className="btn btn-outline-white btn-lg">
+                About CityVerse
               </Link>
             </div>
           </div>
@@ -199,7 +189,7 @@ export default function Home() {
           <div className="hero-stats">
             <div className="hero-stat">
               <div className="hero-stat-number">50+</div>
-              <div className="hero-stat-label">Cities</div>
+              <div className="hero-stat-label">Cities Covered</div>
             </div>
             <div className="hero-stat">
               <div className="hero-stat-number">100+</div>
@@ -207,14 +197,9 @@ export default function Home() {
             </div>
             <div className="hero-stat">
               <div className="hero-stat-number">5K+</div>
-              <div className="hero-stat-label">Happy Travelers</div>
+              <div className="hero-stat-label">Travelers Guided</div>
             </div>
           </div>
-        </div>
-
-        <div className="hero-scroll">
-          <div className="scroll-mouse" />
-          <span>Scroll to explore</span>
         </div>
       </section>
 
@@ -222,25 +207,24 @@ export default function Home() {
         <div className="container">
           <div className="about-grid">
             <div className="about-image-wrapper reveal-left">
-              <img src="/images/places/manimukunda-park-1.jpg" alt="Nepal attraction" className="about-image" />
+              <img src="/images/places/manimukunda-park-1.jpg" alt="Manimukunda Park, Nepal" className="about-image" />
               <div className="about-image-accent" />
               <div className="about-image-badge">
-                <i className="bx bxs-star" />
+                <i className="bx bx-compass" />
                 <div className="about-image-badge-text">
-                  <strong>All of Nepal</strong>
-                  <span>One Platform</span>
+                  <strong>Nepal-Wide</strong>
+                  <span>City Guide Portal</span>
                 </div>
               </div>
             </div>
 
             <div className="about-content reveal-right">
-              <span className="section-subtitle">About Us</span>
-              <h2 className="section-title">Your Gateway to Nepal's Cities</h2>
+              <span className="section-subtitle">About CityVerse</span>
+              <h2 className="section-title">Your Companion for Exploring Nepal</h2>
               <p className="about-text">
-                CityVerse is your trusted companion for exploring cities across Nepal. From
-                bustling market towns to serene hill stations, we bring you curated
-                attractions, local insights and practical travel information for every
-                destination.
+                CityVerse brings together the diverse urban centers, scenic foothills, and cultural capitals
+                of Nepal. Whether you are navigating regional commercial centers or historic pilgrimage spots,
+                we curate accurate details on destinations, local transit, and top things to do.
               </p>
 
               <div className="about-features">
@@ -258,8 +242,7 @@ export default function Home() {
               </div>
 
               <Link to="/places" className="btn btn-primary">
-                <i className="bx bx-right-arrow-alt" />
-                Discover Places
+                Explore Directory <i className="bx bx-right-arrow-alt" />
               </Link>
             </div>
           </div>
@@ -269,11 +252,10 @@ export default function Home() {
       <section className="section" id="cities">
         <div className="container">
           <div className="section-header reveal">
-            <span className="section-subtitle">City Spotlight</span>
-            <h2 className="section-title">Featured Cities</h2>
+            <span className="section-subtitle">Featured Destinations</span>
+            <h2 className="section-title">Spotlight Cities</h2>
             <p className="section-description">
-              We're building guides for cities all across Nepal. Here are our current
-              featured destinations — with many more on the way.
+              Explore in-depth guides for our highlighted cities, featuring landmarks, heritage spots, and local transit.
             </p>
           </div>
 
@@ -282,17 +264,17 @@ export default function Home() {
               <img src="/images/places/butwal-hill-park-1.jpg" alt="Butwal" />
               <div className="city-spotlight-overlay" />
               <div className="city-spotlight-content">
-                <span className="city-spotlight-tag">Rupandehi · Lumbini Province</span>
+                <span className="city-spotlight-tag">Lumbini Province · Hills & River</span>
                 <h3>Butwal</h3>
                 <p>
-                  A lively commercial city wrapped around green hills and the Tinau River, with
-                  heritage sites just a short drive away.
+                  A major commercial crossroads nestled at the base of Chure hills, bordered by the Tinau river
+                  with historic parks and scenic valley viewpoints.
                 </p>
                 <ul className="city-spotlight-list">
                   <li><i className="bx bx-check" /> Butwal Hill Park</li>
                   <li><i className="bx bx-check" /> Manimukunda Park</li>
                   <li><i className="bx bx-check" /> Siddha Baba Temple</li>
-                  <li><i className="bx bx-check" /> Devdaha</li>
+                  <li><i className="bx bx-check" /> Devdaha Ancient Sites</li>
                 </ul>
                 <Link to="/places?city=BUTWAL" className="btn btn-white">
                   Explore Butwal <i className="bx bx-right-arrow-alt" />
@@ -304,17 +286,17 @@ export default function Home() {
               <img src="/images/places/bhairahawa-1.jpg" alt="Bhairahawa" />
               <div className="city-spotlight-overlay" />
               <div className="city-spotlight-content">
-                <span className="city-spotlight-tag">Rupandehi · Lumbini Province</span>
+                <span className="city-spotlight-tag">Lumbini Province · Southern Gateway</span>
                 <h3>Bhairahawa</h3>
                 <p>
-                  The gateway city for pilgrims and travelers, blending busy bazaars, Buddhist
-                  heritage and an international airport.
+                  The bustling southern aviation and trading center (Siddharthanagar), connecting international visitors
+                  to Lumbini and surrounding Terai heritage trails.
                 </p>
                 <ul className="city-spotlight-list">
-                  <li><i className="bx bx-check" /> Gautam Buddha International Airport</li>
-                  <li><i className="bx bx-check" /> Ramgram Stupa</li>
-                  <li><i className="bx bx-check" /> Sunauli Border</li>
-                  <li><i className="bx bx-check" /> Bhairahawa Market</li>
+                  <li><i className="bx bx-check" /> Gautam Buddha Int’l Airport</li>
+                  <li><i className="bx bx-check" /> Ramgram Ancient Relic Stupa</li>
+                  <li><i className="bx bx-check" /> Sunauli Regional Gateway</li>
+                  <li><i className="bx bx-check" /> Bhairahawa Bazaars & Markets</li>
                 </ul>
                 <Link to="/places?city=BHAIRAHWA" className="btn btn-white">
                   Explore Bhairahawa <i className="bx bx-right-arrow-alt" />
@@ -323,12 +305,17 @@ export default function Home() {
             </article>
           </div>
 
-          <div className="coming-soon-banner reveal">
-            <i className="bx bx-rocket" />
-            <div>
-              <strong>More cities coming soon!</strong>
-              <p>Kathmandu, Pokhara, Chitwan, Janakpur and many more are on the way.</p>
+          <div className="cities-directory-banner reveal">
+            <div className="cities-directory-content">
+              <i className="bx bx-map-alt" />
+              <div>
+                <strong>Looking for other cities?</strong>
+                <p>Search Kathmandu, Pokhara, Chitwan, Dharan, Janakpur and more using the search bar above or directory filters.</p>
+              </div>
             </div>
+            <Link to="/places" className="btn btn-outline">
+              View All Destinations
+            </Link>
           </div>
         </div>
       </section>
@@ -336,9 +323,11 @@ export default function Home() {
       <section className="section" id="places" style={{ background: 'var(--bg-secondary)' }}>
         <div className="container">
           <div className="section-header reveal">
-            <span className="section-subtitle">Explore</span>
+            <span className="section-subtitle">Directory</span>
             <h2 className="section-title">Popular Attractions</h2>
-            <p className="section-description">Discover the best attractions across Nepal's cities.</p>
+            <p className="section-description">
+              Browse top-rated parks, cultural monuments, and viewpoints across Nepal.
+            </p>
           </div>
 
           <div className="places-grid">
@@ -361,7 +350,7 @@ export default function Home() {
 
           <div style={{ textAlign: 'center', marginTop: 'var(--space-10)' }}>
             <Link to="/places" className="btn btn-primary">
-              <i className="bx bx-map-pin" /> View All Attractions
+              <i className="bx bx-grid-alt" /> View All Attractions
             </Link>
           </div>
         </div>
@@ -370,11 +359,10 @@ export default function Home() {
       <section className="section" id="transport">
         <div className="container">
           <div className="section-header reveal">
-            <span className="section-subtitle">Getting Around</span>
-            <h2 className="section-title">Transportation Options</h2>
+            <span className="section-subtitle">Local Transit</span>
+            <h2 className="section-title">Transportation Guide</h2>
             <p className="section-description">
-              Choose from a range of transport options to explore cities across Nepal
-              comfortably and affordably.
+              Common transit options available in major cities across Nepal to help you plan your itinerary.
             </p>
           </div>
 
@@ -387,7 +375,7 @@ export default function Home() {
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
                 <div className="transport-price">
-                  {item.price} <span>/ base fare</span>
+                  {item.price} <span>/ typical fare</span>
                 </div>
               </div>
             ))}
@@ -398,17 +386,17 @@ export default function Home() {
       <section className="section" id="testimonials" style={{ background: 'var(--bg-secondary)' }}>
         <div className="container">
           <div className="section-header reveal">
-            <span className="section-subtitle">Testimonials</span>
+            <span className="section-subtitle">Reviews</span>
             <h2 className="section-title">What Travelers Say</h2>
             <p className="section-description">
-              Hear from fellow explorers who have experienced Nepal's vibrant cities.
+              Feedback from explorers and tourists using CityVerse for their journey across Nepal.
             </p>
           </div>
 
           <div className="places-grid">
             {testimonials.map((item) => (
               <div className="testimonial-card reveal" key={item.name}>
-                <div className="testimonial-quote">"</div>
+                <div className="testimonial-quote">“</div>
                 <p className="testimonial-text">{item.text}</p>
                 <div className="testimonial-author">
                   <div className="testimonial-avatar">{item.initials}</div>
@@ -425,21 +413,15 @@ export default function Home() {
 
       <section className="cta-banner">
         <div className="cta-banner-bg" />
-        <div className="cta-shapes">
-          <div className="cta-shape cta-shape-1" />
-          <div className="cta-shape cta-shape-2" />
-          <div className="cta-shape cta-shape-3" />
-        </div>
         <div className="container">
           <div className="cta-banner-content reveal">
-            <h2>Ready to Explore Nepal?</h2>
+            <h2>Plan Your Trip Across Nepal</h2>
             <p>
-              Start planning your next adventure across Nepal's incredible cities. Discover
-              attractions, plan routes and create memories that last a lifetime.
+              Explore city guides, compare attractions, and discover historical and natural landmarks across Nepal.
             </p>
             <Link to="/places" className="btn btn-white btn-lg">
-              <i className="bx bx-map-pin" />
-              Start Exploring
+              <i className="bx bx-compass" />
+              Browse Places
             </Link>
           </div>
         </div>
