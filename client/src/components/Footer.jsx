@@ -14,7 +14,7 @@ export default function Footer() {
                 <span>CityVerse</span>
               </div>
               <p>
-                Your trusted companion for exploring Butwal &amp; Bhairahawa. We make travel
+                Your trusted companion for exploring cities across Nepal. We make travel
                 easy, affordable and unforgettable.
               </p>
               <div className="footer-social">
@@ -58,19 +58,19 @@ export default function Footer() {
               <h4 className="footer-heading">Explore</h4>
               <ul className="footer-links">
                 <li>
+                  <Link to="/places">All Cities</Link>
+                </li>
+                <li>
                   <Link to="/places?city=BUTWAL">Butwal</Link>
                 </li>
                 <li>
                   <Link to="/places?city=BHAIRAHWA">Bhairahawa</Link>
                 </li>
                 <li>
-                  <Link to="/places?category=recreation">Manimukunda Park</Link>
+                  <Link to="/places?category=nature">Nature &amp; Parks</Link>
                 </li>
                 <li>
-                  <Link to="/places?category=nature">Butwal Hill Park</Link>
-                </li>
-                <li>
-                  <Link to="/places?category=religious">Devdaha</Link>
+                  <Link to="/places?category=religious">Heritage Sites</Link>
                 </li>
               </ul>
             </div>
@@ -85,7 +85,7 @@ export default function Footer() {
                   marginBottom: 'var(--space-4)',
                 }}
               >
-                Subscribe for travel tips, deals and updates about Butwal &amp; Bhairahawa.
+                Subscribe for travel tips, deals and updates about Nepal's cities.
               </p>
               <form
                 className="footer-newsletter-form"

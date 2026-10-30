@@ -10,15 +10,15 @@ const why = [
 const cities = [
   {
     name: 'Butwal',
-    tagline: 'The commercial heartbeat of Rupandehi',
+    tagline: 'The commercial heartbeat of Lumbini Province',
     text: 'A lively city known for its markets, parks and food. Perfect for a city break with easy access to nearby heritage sites like Devdaha.',
     highlights: ['Manimukunda Park', 'Butwal Hill Park', 'Siddhartha Chowk'],
   },
   {
     name: 'Bhairahawa',
-    tagline: 'Gateway of the region',
+    tagline: 'Gateway to Lumbini and beyond',
     text: 'Officially Siddharthanagar, this border city connects travelers to the rest of Nepal and offers great shopping and dining.',
-    highlights: ['Gautam Buddha Int’l Airport', 'Buddha Park', 'Bhairahawa Market'],
+    highlights: ['Gautam Buddha Int\'l Airport', 'Buddha Park', 'Bhairahawa Market'],
   },
 ];
 
@@ -28,7 +28,7 @@ export default function About() {
       <section className="page-hero">
         <div className="container">
           <h1>About CityVerse</h1>
-          <p>Your trusted guide to Butwal and Bhairahawa — two cities, endless discoveries.</p>
+          <p>Your trusted guide to Nepal's cities — endless destinations, endless discoveries.</p>
         </div>
       </section>
 
@@ -36,7 +36,7 @@ export default function About() {
         <div className="container">
           <div className="about-grid">
             <div className="about-image-wrapper reveal-left">
-              <img src="/images/places/butwal-hill-park-1.jpg" alt="Butwal and Bhairahawa" className="about-image" />
+              <img src="/images/places/butwal-hill-park-1.jpg" alt="Nepal cityscape" className="about-image" />
               <div className="about-image-accent" />
               <div className="about-image-badge">
                 <i className="bx bxs-star" />
@@ -49,19 +49,19 @@ export default function About() {
 
             <div className="about-content reveal-right">
               <span className="section-subtitle">Our Story</span>
-              <h2 className="section-title">Helping You Discover Rupandehi</h2>
+              <h2 className="section-title">Helping You Discover Nepal</h2>
               <p className="about-text">
                 CityVerse was founded with a single mission: to provide travelers seamless, fair
-                and memorable journeys throughout Butwal and Bhairahawa.
+                and memorable journeys throughout Nepal's vibrant cities.
               </p>
               <p className="about-text">
-                Bhairahawa (officially known as Siddharthanagar) is a vibrant city in Rupandehi
-                district, while Butwal is another major commercial hub in the region. Together they
-                form the perfect base for exploring western Nepal.
+                We started with Butwal and Bhairahawa — two cities close to our hearts — and
+                are expanding to cover destinations across all seven provinces of Nepal. From
+                the Terai plains to the Himalayan foothills, CityVerse is your go-to city guide.
               </p>
               <p className="about-text">
                 We built a unified tourism portal connecting travelers with accurate information about
-                the best spots, local culture and practical travel tips.
+                the best spots, local culture and practical travel tips for every city.
               </p>
 
               <Link to="/places" className="btn btn-primary">
@@ -96,8 +96,11 @@ export default function About() {
       <section className="section">
         <div className="container">
           <div className="section-header reveal">
-            <span className="section-subtitle">The Region</span>
-            <h2 className="section-title">Two Cities, One Experience</h2>
+            <span className="section-subtitle">Currently Featured</span>
+            <h2 className="section-title">Our First Cities</h2>
+            <p className="section-description">
+              We launched with these two cities and are adding more destinations across Nepal.
+            </p>
           </div>
 
           <div className="places-grid">

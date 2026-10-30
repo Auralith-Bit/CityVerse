@@ -58,8 +58,8 @@ export default function Places() {
     <>
       <section className="page-hero">
         <div className="container">
-          <h1>Attractions in Butwal &amp; Bhairahawa</h1>
-          <p>Browse famous spots, parks, markets and heritage sites across the two cities.</p>
+          <h1>Attractions Across Nepal</h1>
+          <p>Browse famous spots, parks, markets and heritage sites across Nepal's cities.</p>
         </div>
       </section>
 
@@ -68,7 +68,7 @@ export default function Places() {
           <div className="filter-search">
             <input
               type="search"
-              placeholder="Search attractions, markets, parks…"
+              placeholder="Search cities, attractions, parks…"
               value={search}
               onChange={(event) => {
                 setSearch(event.target.value);
