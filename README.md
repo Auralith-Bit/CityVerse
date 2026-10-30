@@ -151,11 +151,22 @@ npm run dev
 
 The app runs on **http://localhost:5173**. Vite proxies `/api` and `/uploads` to `http://localhost:5000`, so no extra CORS setup is needed in development.
 
-For production deployments, set an API base URL in `client/.env`:
+When the frontend and API are deployed on the same origin, leave `VITE_API_URL` empty. To use a separately hosted API, set its origin in `client/.env`:
 
 ```env
 VITE_API_URL="https://your-api-domain.com"
 ```
+
+### Deploy to Vercel
+
+The root `vercel.json` configures the Vite frontend and Express API as services in one Vercel project:
+
+1. Import the repository root as the Vercel project root so Vercel can read the root `vercel.json`.
+2. The `client` service builds the Vite app; the `server` service runs Express. The rewrites expose `/api/*` and `/uploads/*` through the server and send all other paths to the frontend.
+3. Configure the Vercel project's environment variables for the API, including `DATABASE_URL`, `JWT_SECRET`, and `CLIENT_ORIGIN` set to the deployment's exact public origin (for example, `https://your-project.vercel.app`). Add comma-separated origins if the API must accept requests from multiple origins.
+4. Leave `VITE_API_URL` empty for same-origin routing. If you set it to a separate API origin, configure that API's CORS allowlist accordingly.
+
+The MySQL database must be hosted separately and reachable from Vercel. Admin uploads are not deployment-ready yet: the current implementation writes to the server's local filesystem, which is not durable on Vercel, and Vercel's Express runtime does not serve files with `express.static()`. Move uploads to an external object-storage service before relying on admin-uploaded images in production.
 
 ---
 
