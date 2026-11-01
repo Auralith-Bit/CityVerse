@@ -129,7 +129,7 @@ function CitySearch() {
           Search
         </button>
       </div>
-      {open && filtered.length > 0 && (
+{open && filtered.length > 0 && (
         <ul className="hero-search-dropdown">
           {filtered.map((city) => (
             <li key={city}>
@@ -141,20 +141,6 @@ function CitySearch() {
           ))}
         </ul>
       )}
-
-      <div className="hero-popular">
-        <span className="hero-popular-label">Popular:</span>
-        {popularCities.map((city) => (
-          <button
-            key={city}
-            type="button"
-            className="hero-popular-chip"
-            onClick={() => handlePopular(city)}
-          >
-            <i className="bx bx-map-pin" /> {city}
-          </button>
-        ))}
-      </div>
     </form>
   );
 }
