@@ -184,11 +184,11 @@ export default function Home() {
               Nepal Travel & City Guide
             </div>
 
-            <h1 className="hero-title">
-              Explore <span className="highlight">Nepal</span>,
-              <br />
-              City by City
-            </h1>
+<h1 className="hero-title">
+  Experience the Majestic Beauty of Nepal
+  <br />
+  Explore cities, villages & mountain trails
+</h1>
 
             <p className="hero-description">
               Find iconic landmarks, quiet heritage sites, local transport, and city highlights
