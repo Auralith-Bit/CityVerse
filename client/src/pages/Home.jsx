@@ -16,6 +16,8 @@ const nepalCities = [
   'Dailekh', 'Jomsom', 'Manang', 'Mustang', 'Taplejung',
 ];
 
+const popularCities = ['Butwal', 'Bhairahawa', 'Kathmandu', 'Pokhara', 'Chitwan', 'Lumbini'];
+
 const testimonials = [
   {
     name: 'Sarah Kim',
@@ -103,6 +105,12 @@ function CitySearch() {
     }
   };
 
+  const handlePopular = (city) => {
+    setQuery(city);
+    setOpen(false);
+    navigate(`/places?search=${encodeURIComponent(city)}`);
+  };
+
   return (
     <form className="hero-search" ref={ref} onSubmit={handleSubmit} autoComplete="off">
       <div className="hero-search-input-wrapper">
@@ -133,6 +141,20 @@ function CitySearch() {
           ))}
         </ul>
       )}
+
+      <div className="hero-popular">
+        <span className="hero-popular-label">Popular:</span>
+        {popularCities.map((city) => (
+          <button
+            key={city}
+            type="button"
+            className="hero-popular-chip"
+            onClick={() => handlePopular(city)}
+          >
+            <i className="bx bx-map-pin" /> {city}
+          </button>
+        ))}
+      </div>
     </form>
   );
 }
