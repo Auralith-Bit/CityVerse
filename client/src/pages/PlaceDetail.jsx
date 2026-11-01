@@ -3,8 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 import { api, resolveImage } from '../api/client';
 import PlaceCard from '../components/PlaceCard';
 
-const cityLabel = { BUTWAL: 'Butwal', BHAIRAHWA: 'Bhairahawa' };
-
 export default function PlaceDetail() {
   const { slug } = useParams();
   const [place, setPlace] = useState(null);
@@ -24,7 +22,7 @@ export default function PlaceDetail() {
       .then((data) => {
         setPlace(data.place);
         setActiveImage(data.place.coverImage || data.place.images?.[0]?.url || '');
-        return api.getPlaces({ city: data.place.city }).catch(() => null);
+        return api.getPlaces({ city: data.place.city?.slug }).catch(() => null);
       })
       .then((data) => {
         setRelated(
@@ -123,7 +121,7 @@ export default function PlaceDetail() {
                   <i className="bx bx-category" /> {place.category?.name}
                 </span>
                 <span className="detail-badge">
-                  <i className="bx bx-map-pin" /> {cityLabel[place.city] || place.city}
+                  <i className="bx bx-map-pin" /> {place.city?.name || 'Nepal'}
                 </span>
                 <span className="detail-badge">
                   <i className="bx bxs-star" /> {Number(place.rating).toFixed(1)} rating
@@ -168,7 +166,7 @@ export default function PlaceDetail() {
               <h3>Visitor Information</h3>
               <div className="detail-row">
                 <span>City</span>
-                <strong>{cityLabel[place.city] || place.city}</strong>
+                <strong>{place.city?.name || 'Nepal'}</strong>
               </div>
               <div className="detail-row">
                 <span>Category</span>
@@ -205,11 +203,11 @@ export default function PlaceDetail() {
               )}
 
               <Link
-                to={`/places?city=${place.city}`}
+                to={`/places?city=${place.city?.slug || ''}`}
                 className="btn btn-primary"
                 style={{ width: '100%', marginTop: 'var(--space-5)' }}
               >
-                <i className="bx bx-compass" /> More in {cityLabel[place.city] || place.city}
+                <i className="bx bx-compass" /> More in {place.city?.name || 'Nepal'}
               </Link>
             </aside>
           </div>
@@ -221,7 +219,7 @@ export default function PlaceDetail() {
           <div className="container">
             <div className="section-header reveal">
               <span className="section-subtitle">Nearby</span>
-              <h2 className="section-title">More in {cityLabel[place.city] || place.city}</h2>
+              <h2 className="section-title">More in {place.city?.name || 'Nepal'}</h2>
             </div>
             <div className="places-grid">
               {related.map((item) => (

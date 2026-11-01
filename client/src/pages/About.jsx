@@ -123,7 +123,7 @@ export default function About() {
                     ))}
                   </ul>
                   <Link
-                    to={`/places?city=${city.name === 'Butwal' ? 'BUTWAL' : 'BHAIRAHWA'}`}
+                    to={`/places?city=${city.name.toLowerCase()}`}
                     className="btn btn-primary btn-sm"
                     style={{ marginTop: 'var(--space-5)' }}
                   >

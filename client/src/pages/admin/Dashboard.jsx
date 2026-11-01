@@ -20,6 +20,7 @@ export default function Dashboard() {
     { key: 'published', label: 'Published', icon: 'bx bx-check-circle' },
     { key: 'featured', label: 'Featured', icon: 'bx bxs-star' },
     { key: 'categories', label: 'Categories', icon: 'bx bx-category' },
+    { key: 'cities', label: 'Cities', icon: 'bx bx-buildings' },
   ];
 
   return (
@@ -49,6 +50,9 @@ export default function Dashboard() {
           </Link>
           <Link to="/admin/categories" className="admin-btn admin-btn-outline">
             <i className="bx bx-category" /> Manage Categories
+          </Link>
+          <Link to="/admin/cities" className="admin-btn admin-btn-outline">
+            <i className="bx bx-buildings" /> Manage Cities
           </Link>
         </div>
       </div>

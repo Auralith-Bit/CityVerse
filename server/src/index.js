@@ -6,11 +6,16 @@ const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const placeRoutes = require('./routes/places');
 const categoryRoutes = require('./routes/categories');
+const cityRoutes = require('./routes/cities');
 const adminRoutes = require('./routes/admin');
 const { notFound, errorHandler } = require('./middlewares/errorHandler');
 
 const app = express();
 const port = process.env.PORT || 5000;
+
+if (process.env.ADMIN_BYPASS === 'true' && process.env.NODE_ENV !== 'production') {
+  console.warn('WARNING: ADMIN_BYPASS is enabled. Admin API routes are unauthenticated.');
+}
 
 const allowedOrigins = (process.env.CLIENT_ORIGIN || 'http://localhost:5173')
   .split(',')
@@ -40,6 +45,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/places', placeRoutes);
 app.use('/api/categories', categoryRoutes);
+app.use('/api/cities', cityRoutes);
 app.use('/api/admin', adminRoutes);
 
 app.use(notFound);

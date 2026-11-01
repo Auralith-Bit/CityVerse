@@ -1,6 +1,6 @@
 # CityVerse — React + Express
 
-CityVerse is a tourism web app for discovering **Butwal** and **Bhairahawa** in Rupandehi, Nepal.
+CityVerse is a tourism web app for discovering cities across Nepal, starting with **Butwal** and **Bhairahawa** in Rupandehi.
 It uses a React (Vite) frontend, a Node.js + Express REST API, and MySQL (managed with MySQL Workbench) via Prisma.
 
 > This project replaces the older static site. The site is content-driven: browsing attractions is public, while all content management happens in a protected admin panel.
@@ -32,6 +32,7 @@ It uses a React (Vite) frontend, a Node.js + Express REST API, and MySQL (manage
   - Create / edit / delete places
   - Cover and multi-image gallery uploads
   - Highlights, best time, directions and travel tips editing
+  - Create / edit / delete cities; public city filters update automatically
   - Create / edit / delete categories
   - Protected routes with JWT + role check
 - Seeded with 12 destinations across Butwal and Bhairahawa, each with multiple photos
@@ -51,7 +52,7 @@ CityVerse/
 │       ├── context/            # AuthContext, ThemeContext
 │       ├── hooks/              # useScrollReveal
 │       ├── pages/              # Home, Places, PlaceDetail, About, Contact, Nightlife
-│       │   └── admin/          # AdminLogin, Dashboard, ManagePlaces, PlaceForm, ManageCategories
+│       │   └── admin/          # AdminLogin, Dashboard, ManagePlaces, PlaceForm, ManageCities, ManageCategories
 │       ├── styles/             # Design system + page/admin styles
 │       ├── utils/              # toasts
 │       ├── App.jsx
@@ -62,9 +63,9 @@ CityVerse/
     │   └── seed.js             # Admin user, categories, places
     ├── src/
     │   ├── config/             # Prisma client
-    │   ├── controllers/        # auth, places, categories
+    │   ├── controllers/        # auth, places, cities, categories
     │   ├── middlewares/        # auth, upload, error handling
-    │   ├── routes/             # auth, places, categories, admin
+    │   ├── routes/             # auth, places, cities, categories, admin
     │   ├── utils/              # slugify, HttpError
     │   └── index.js            # Express app
     └── uploads/                # Uploaded images
@@ -118,7 +119,7 @@ npm run prisma:migrate -- --name init   # creates tables + migration
 # npm run prisma:push
 ```
 
-Seed an admin user, categories and sample attractions:
+Seed an admin user, cities, categories and sample attractions:
 
 ```bash
 npm run seed
@@ -208,9 +209,10 @@ Base URL: `http://localhost:5000`
 
 | Method | Endpoint | Description |
 | :-- | :-- | :-- |
-| GET | `/api/places` | List published places. Query: `city`, `category`, `search`, `featured` |
-| GET | `/api/places/:slug` | Single published place |
+| GET | `/api/places` | List published places. Query: `city` (city slug), `category`, `search`, `featured` |
+| GET | `/api/places/:slug` | Single published place (includes its city) |
 | GET | `/api/categories` | List categories with place counts |
+| GET | `/api/cities` | List cities with place counts |
 
 ### Admin (`Authorization: Bearer <token>`)
 
@@ -226,6 +228,9 @@ Base URL: `http://localhost:5000`
 | POST | `/api/admin/categories` | Create category |
 | PUT | `/api/admin/categories/:id` | Update category |
 | DELETE | `/api/admin/categories/:id` | Delete category (blocked if it has places) |
+| POST | `/api/admin/cities` | Create city |
+| PUT | `/api/admin/cities/:id` | Update city |
+| DELETE | `/api/admin/cities/:id` | Delete city (blocked if it has places) |
 
 ---
 
@@ -233,7 +238,8 @@ Base URL: `http://localhost:5000`
 
 - **users** — id, name, email (unique), password (bcrypt), role (`ADMIN` | `EDITOR`)
 - **categories** — id, name, slug (unique), description
-- **places** — id, title, slug, description, highlights (JSON), bestTime, gettingThere, travelTips, city (`BUTWAL` | `BHAIRAHWA`), address, distanceKm, rating, reviewCount, coverImage, isFeatured, isPublished, categoryId
+- **cities** — id, name, slug (unique), description
+- **places** — id, title, slug, description, highlights (JSON), bestTime, gettingThere, travelTips, cityId, address, distanceKm, rating, reviewCount, coverImage, isFeatured, isPublished, categoryId
 - **place_images** — id, url, alt, placeId
 
 All tables are visible and editable in MySQL Workbench.
@@ -243,6 +249,7 @@ All tables are visible and editable in MySQL Workbench.
 ## Notes
 
 - Only admins can access `/admin`. Public users cannot create accounts.
+- Local preview without admin login: set `VITE_ADMIN_BYPASS=true` in `client/.env.local` and `ADMIN_BYPASS=true` in `server/.env`. This is ignored in production builds (`NODE_ENV=production` / Vite `PROD`); restart both servers after changing it.
 - Images may be either static paths (`/images/...`) or uploaded files (`/uploads/...`).
 - Seeded place photos live in `client/public/images/places/`; attribution and licenses are listed in `client/public/images/places/CREDITS.md`.
 - `README2.md` is kept out of version control via `.gitignore`.

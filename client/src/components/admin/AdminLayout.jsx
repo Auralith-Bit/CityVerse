@@ -5,6 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 const navItems = [
   { to: '/admin', label: 'Dashboard', icon: 'bx bxs-dashboard', end: true },
   { to: '/admin/places', label: 'Places', icon: 'bx bx-map-pin', end: true },
+  { to: '/admin/cities', label: 'Cities', icon: 'bx bx-buildings' },
   { to: '/admin/categories', label: 'Categories', icon: 'bx bx-category' },
 ];
 

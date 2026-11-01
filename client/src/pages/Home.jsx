@@ -276,7 +276,7 @@ export default function Home() {
                   <li><i className="bx bx-check" /> Siddha Baba Temple</li>
                   <li><i className="bx bx-check" /> Devdaha Ancient Sites</li>
                 </ul>
-                <Link to="/places?city=BUTWAL" className="btn btn-white">
+                <Link to="/places?city=butwal" className="btn btn-white">
                   Explore Butwal <i className="bx bx-right-arrow-alt" />
                 </Link>
               </div>
@@ -298,7 +298,7 @@ export default function Home() {
                   <li><i className="bx bx-check" /> Sunauli Regional Gateway</li>
                   <li><i className="bx bx-check" /> Bhairahawa Bazaars & Markets</li>
                 </ul>
-                <Link to="/places?city=BHAIRAHWA" className="btn btn-white">
+                <Link to="/places?city=bhairahawa" className="btn btn-white">
                   Explore Bhairahawa <i className="bx bx-right-arrow-alt" />
                 </Link>
               </div>

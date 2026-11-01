@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
-import { useAuth } from '../context/AuthContext';
 
 const links = [
   { to: '/', label: 'Home', end: true },
@@ -13,7 +12,6 @@ const links = [
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
-  const { isAdmin, user, logout } = useAuth();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -56,21 +54,6 @@ export default function Navbar() {
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle dark mode">
             <i className={theme === 'dark' ? 'bx bx-sun' : 'bx bx-moon'} />
           </button>
-
-          {isAdmin ? (
-            <>
-              <Link to="/admin" className="nav-auth-btn nav-login-btn">
-                {user?.name ? user.name.split(' ')[0] : 'Admin'}
-              </Link>
-              <button className="nav-auth-btn nav-signup-btn" onClick={logout}>
-                Log Out
-              </button>
-            </>
-          ) : (
-            <Link to="/admin/login" className="nav-auth-btn nav-login-btn">
-              Admin
-            </Link>
-          )}
 
           <div className={`nav-toggle ${open ? 'active' : ''}`} onClick={() => setOpen((v) => !v)}>
             <span />

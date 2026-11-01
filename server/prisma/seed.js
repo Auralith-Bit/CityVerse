@@ -11,6 +11,19 @@ const categories = [
   { name: 'Shopping', slug: 'shopping', description: 'Markets and shopping districts' },
 ];
 
+const cities = [
+  {
+    name: 'Butwal',
+    slug: 'butwal',
+    description: 'Commercial crossroads at the base of the Chure hills, bordered by the Tinau river.',
+  },
+  {
+    name: 'Bhairahawa',
+    slug: 'bhairahawa',
+    description: 'Southern aviation and trading gateway to Lumbini and the Terai plains.',
+  },
+];
+
 const places = [
   {
     title: 'Butwal City Center',
@@ -21,7 +34,7 @@ const places = [
     bestTime: 'October to March',
     gettingThere: 'Butwal is well connected by highway, about 25 km from Bhairahawa and a day\'s drive from Kathmandu.',
     travelTips: 'Weekday evenings are less crowded. Bargaining is common in local markets, so compare prices first.',
-    city: 'BUTWAL',
+    citySlug: 'butwal',
     address: 'Traffic Chowk, Butwal',
     distanceKm: 0,
     rating: 4.6,
@@ -44,7 +57,7 @@ const places = [
     bestTime: 'Morning and late afternoon',
     gettingThere: 'Located in Butwal-11, a short drive from the city center. Rickshaws and taxis drop you at the main gate.',
     travelTips: 'Carry water and snacks. The park is best enjoyed in the cooler hours of the day.',
-    city: 'BUTWAL',
+    citySlug: 'butwal',
     address: 'Butwal-11, Rupandehi',
     distanceKm: 2,
     rating: 4.5,
@@ -68,7 +81,7 @@ const places = [
     bestTime: 'Late afternoon to sunset',
     gettingThere: 'A short uphill drive from central Butwal. Local taxis and rickshaws are available.',
     travelTips: 'Visit around sunset for the best light and cooler temperatures. Bring a light jacket in winter.',
-    city: 'BUTWAL',
+    citySlug: 'butwal',
     address: 'Butwal-13, Rupandehi',
     distanceKm: 3,
     rating: 4.4,
@@ -91,7 +104,7 @@ const places = [
     bestTime: 'October to March, early morning',
     gettingThere: 'About 6 km from Butwal city center. Taxis and rickshaws run regularly to the temple.',
     travelTips: 'Dress modestly and follow temple customs. Weekends and festival days can be busy.',
-    city: 'BUTWAL',
+    citySlug: 'butwal',
     address: 'Siddhababa, Butwal',
     distanceKm: 6,
     rating: 4.6,
@@ -114,7 +127,7 @@ const places = [
     bestTime: 'October to March',
     gettingThere: 'About 12 km east of Butwal. Reachable by taxi or local bus from the city.',
     travelTips: 'Combine the visit with nearby villages for a full day of exploring.',
-    city: 'BUTWAL',
+    citySlug: 'butwal',
     address: 'Devdaha, Rupandehi',
     distanceKm: 12,
     rating: 4.7,
@@ -137,7 +150,7 @@ const places = [
     bestTime: 'Sunrise or clear evenings',
     gettingThere: 'A short drive from Butwal toward Palpa, followed by a short walk to the viewpoint.',
     travelTips: 'Check the weather before going. Clear days offer the best views.',
-    city: 'BUTWAL',
+    citySlug: 'butwal',
     address: 'Nuwakot, Rupandehi',
     distanceKm: 18,
     rating: 4.5,
@@ -160,7 +173,7 @@ const places = [
     bestTime: 'October to April',
     gettingThere: 'A few kilometres from the city center. Accessible by rickshaw or taxi.',
     travelTips: 'Avoid the river during the monsoon season when currents are strong.',
-    city: 'BUTWAL',
+    citySlug: 'butwal',
     address: 'Tinau, Butwal',
     distanceKm: 4,
     rating: 4.3,
@@ -183,7 +196,7 @@ const places = [
     bestTime: 'October to March',
     gettingThere: 'Located in Rupandehi, about 25 km from Butwal. Served by road and nearby Gautam Buddha International Airport.',
     travelTips: 'Traffic is heavy around the border. Plan extra time for transfers and keep documents handy.',
-    city: 'BHAIRAHWA',
+    citySlug: 'bhairahawa',
     address: 'Siddharthanagar, Rupandehi',
     distanceKm: 0,
     rating: 4.4,
@@ -202,7 +215,7 @@ const places = [
     bestTime: 'Morning and early evening',
     gettingThere: 'In the main market area of Bhairahawa, walkable from Siddhartha Chowk.',
     travelTips: 'Carry small cash and compare prices before buying.',
-    city: 'BHAIRAHWA',
+    citySlug: 'bhairahawa',
     address: 'Main Market, Bhairahawa',
     distanceKm: 1,
     rating: 4.2,
@@ -221,7 +234,7 @@ const places = [
     bestTime: 'Year-round',
     gettingThere: 'About 5 km from Bhairahawa city center. Taxis are available at the terminal.',
     travelTips: 'Arrive at least two hours before domestic and three hours before international departures.',
-    city: 'BHAIRAHWA',
+    citySlug: 'bhairahawa',
     address: 'Bhairahawa, Rupandehi',
     distanceKm: 5,
     rating: 4.6,
@@ -244,7 +257,7 @@ const places = [
     bestTime: 'October to March',
     gettingThere: 'Near Parasi, around 55 km from Bhairahawa by road. Taxis and local buses are available.',
     travelTips: 'Combine the visit with Parasi town for local food and markets.',
-    city: 'BHAIRAHWA',
+    citySlug: 'bhairahawa',
     address: 'Ramgram, Parasi',
     distanceKm: 55,
     rating: 4.5,
@@ -267,7 +280,7 @@ const places = [
     bestTime: 'Morning to early evening',
     gettingThere: 'About 3 km from Bhairahawa city center. Rickshaws and taxis are easy to find.',
     travelTips: 'Keep your documents handy and expect queues at peak hours.',
-    city: 'BHAIRAHWA',
+    citySlug: 'bhairahawa',
     address: 'Sunauli, Bhairahawa',
     distanceKm: 3,
     rating: 4.1,
@@ -313,12 +326,22 @@ async function main() {
     categoryBySlug[category.slug] = record.id;
   }
 
+  const cityBySlug = {};
+  for (const city of cities) {
+    const record = await prisma.city.upsert({
+      where: { slug: city.slug },
+      update: { name: city.name, description: city.description },
+      create: city,
+    });
+    cityBySlug[city.slug] = record.id;
+  }
+
   for (const place of places) {
-    const { categorySlug, images = [], ...data } = place;
+    const { categorySlug, citySlug, images = [], ...data } = place;
     const record = await prisma.place.upsert({
       where: { slug: place.slug },
-      update: { ...data, categoryId: categoryBySlug[categorySlug] },
-      create: { ...data, categoryId: categoryBySlug[categorySlug] },
+      update: { ...data, categoryId: categoryBySlug[categorySlug], cityId: cityBySlug[citySlug] },
+      create: { ...data, categoryId: categoryBySlug[categorySlug], cityId: cityBySlug[citySlug] },
     });
 
     await prisma.placeImage.deleteMany({ where: { placeId: record.id } });
@@ -329,7 +352,9 @@ async function main() {
     }
   }
 
-  console.log(`Seeded ${categories.length} categories and ${places.length} places.`);
+  console.log(
+    `Seeded ${cities.length} cities, ${categories.length} categories and ${places.length} places.`
+  );
 }
 
 main()

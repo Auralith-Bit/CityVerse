@@ -14,6 +14,7 @@ import Dashboard from './pages/admin/Dashboard';
 import ManagePlaces from './pages/admin/ManagePlaces';
 import PlaceForm from './pages/admin/PlaceForm';
 import ManageCategories from './pages/admin/ManageCategories';
+import ManageCities from './pages/admin/ManageCities';
 import NotFound from './pages/NotFound';
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="places/new" element={<PlaceForm />} />
           <Route path="places/:id/edit" element={<PlaceForm />} />
           <Route path="categories" element={<ManageCategories />} />
+          <Route path="cities" element={<ManageCities />} />
         </Route>
       </Route>
     </Routes>

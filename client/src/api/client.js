@@ -43,6 +43,7 @@ export const api = {
   },
   getPlace: (slug) => request(`/api/places/${slug}`),
   getCategories: () => request('/api/categories'),
+  getCities: () => request('/api/cities'),
 
   adminStats: (token) => request('/api/admin/stats', { token }),
   adminPlaces: (token) => request('/api/admin/places', { token }),
@@ -62,6 +63,12 @@ export const api = {
     request(`/api/admin/categories/${id}`, { method: 'PUT', body: data, token }),
   deleteCategory: (id, token) =>
     request(`/api/admin/categories/${id}`, { method: 'DELETE', token }),
+  createCity: (data, token) =>
+    request('/api/admin/cities', { method: 'POST', body: data, token }),
+  updateCity: (id, data, token) =>
+    request(`/api/admin/cities/${id}`, { method: 'PUT', body: data, token }),
+  deleteCity: (id, token) =>
+    request(`/api/admin/cities/${id}`, { method: 'DELETE', token }),
 };
 
 export function resolveImage(url) {

@@ -11,7 +11,7 @@ const emptyForm = {
   bestTime: '',
   gettingThere: '',
   travelTips: '',
-  city: 'BUTWAL',
+  cityId: '',
   address: '',
   distanceKm: 0,
   rating: 4.5,
@@ -31,6 +31,7 @@ export default function PlaceForm() {
 
   const [form, setForm] = useState(emptyForm);
   const [categories, setCategories] = useState([]);
+  const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState(isEdit);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -52,6 +53,21 @@ export default function PlaceForm() {
   }, []);
 
   useEffect(() => {
+    api
+      .getCities()
+      .then((data) => {
+        const list = data.cities || [];
+        setCities(list);
+        setForm((current) =>
+          current.cityId || list.length === 0
+            ? current
+            : { ...current, cityId: String(list[0].id) }
+        );
+      })
+      .catch(() => {});
+  }, []);
+
+  useEffect(() => {
     if (!isEdit) return;
     setLoading(true);
     api
@@ -65,7 +81,7 @@ export default function PlaceForm() {
           bestTime: place.bestTime || '',
           gettingThere: place.gettingThere || '',
           travelTips: place.travelTips || '',
-          city: place.city,
+          cityId: String(place.cityId),
           address: place.address || '',
           distanceKm: place.distanceKm ?? 0,
           rating: place.rating ?? 4.5,
@@ -133,6 +149,7 @@ export default function PlaceForm() {
         gettingThere: form.gettingThere || null,
         travelTips: form.travelTips || null,
         categoryId: Number(form.categoryId),
+        cityId: Number(form.cityId),
         distanceKm: Number(form.distanceKm) || 0,
         rating: Number(form.rating) || 0,
         reviewCount: Number(form.reviewCount) || 0,
@@ -195,11 +212,27 @@ export default function PlaceForm() {
           </div>
 
           <div className="admin-field">
-            <label htmlFor="city">City *</label>
-            <select id="city" value={form.city} onChange={(event) => update('city', event.target.value)}>
-              <option value="BUTWAL">Butwal</option>
-              <option value="BHAIRAHWA">Bhairahawa</option>
+            <label htmlFor="cityId">City *</label>
+            <select
+              id="cityId"
+              value={form.cityId}
+              onChange={(event) => update('cityId', event.target.value)}
+              required
+            >
+              <option value="" disabled>
+                Select city
+              </option>
+              {cities.map((city) => (
+                <option key={city.id} value={city.id}>
+                  {city.name}
+                </option>
+              ))}
             </select>
+            {cities.length === 0 && (
+              <span className="admin-hint">
+                No cities yet. <Link to="/admin/cities">Add a city first</Link>.
+              </span>
+            )}
           </div>
 
           <div className="admin-field">

@@ -12,11 +12,6 @@ enum Role {
   EDITOR
 }
 
-enum City {
-  BUTWAL
-  BHAIRAHWA
-}
-
 model User {
   id        Int      @id @default(autoincrement())
   name      String
@@ -42,6 +37,19 @@ model Category {
   @@map("categories")
 }
 
+model City {
+  id          Int      @id @default(autoincrement())
+  name        String
+  slug        String   @unique
+  description String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  places Place[]
+
+  @@map("cities")
+}
+
 model Place {
   id          Int      @id @default(autoincrement())
   title       String
@@ -51,7 +59,7 @@ model Place {
   bestTime    String?  @db.VarChar(120)
   gettingThere String? @db.Text
   travelTips  String?  @db.Text
-  city        City
+  cityId      Int
   address     String?
   distanceKm  Float?   @default(0)
   rating      Float    @default(4.5)
@@ -64,9 +72,10 @@ model Place {
   updatedAt   DateTime @updatedAt
 
   category Category     @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  city     City         @relation(fields: [cityId], references: [id], onDelete: Restrict)
   images   PlaceImage[]
 
-  @@index([city])
+  @@index([cityId])
   @@index([categoryId])
   @@map("places")
 }

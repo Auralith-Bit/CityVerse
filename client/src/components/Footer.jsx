@@ -61,10 +61,10 @@ export default function Footer() {
                   <Link to="/places">All Cities</Link>
                 </li>
                 <li>
-                  <Link to="/places?city=BUTWAL">Butwal</Link>
+                  <Link to="/places?city=butwal">Butwal</Link>
                 </li>
                 <li>
-                  <Link to="/places?city=BHAIRAHWA">Bhairahawa</Link>
+                  <Link to="/places?city=bhairahawa">Bhairahawa</Link>
                 </li>
                 <li>
                   <Link to="/places?category=nature">Nature &amp; Parks</Link>

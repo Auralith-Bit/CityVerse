@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { api, resolveImage } from '../../api/client';
 import { useAuth } from '../../context/AuthContext';
 
-const cityLabel = { BUTWAL: 'Butwal', BHAIRAHWA: 'Bhairahawa' };
-
 export default function ManagePlaces() {
   const { token } = useAuth();
   const [places, setPlaces] = useState([]);
@@ -38,7 +36,7 @@ export default function ManagePlaces() {
   };
 
   const filtered = places.filter((place) =>
-    `${place.title} ${place.category?.name || ''} ${cityLabel[place.city] || ''}`
+      `${place.title} ${place.category?.name || ''} ${place.city?.name || ''}`
       .toLowerCase()
       .includes(search.toLowerCase())
   );
@@ -100,7 +98,7 @@ export default function ManagePlaces() {
                     <div className="title-cell">{place.title}</div>
                     <span className="admin-hint">/{place.slug}</span>
                   </td>
-                  <td>{cityLabel[place.city] || place.city}</td>
+                  <td>{place.city?.name || '—'}</td>
                   <td>{place.category?.name}</td>
                   <td>
                     <span className={`admin-pill ${place.isPublished ? 'green' : 'gray'}`}>

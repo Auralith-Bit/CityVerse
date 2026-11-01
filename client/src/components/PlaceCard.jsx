@@ -27,7 +27,7 @@ export default function PlaceCard({ place }) {
           <i className="bx bx-map-pin" /> {Number(place.distanceKm || 0)} km
         </span>
         <span className="place-card-city">
-          <i className="bx bx-buildings" /> {place.city === 'BHAIRAHWA' ? 'Bhairahawa' : 'Butwal'}
+          <i className="bx bx-buildings" /> {place.city?.name || 'Nepal'}
         </span>
       </div>
       <div className="place-card-body">

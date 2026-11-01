@@ -3,25 +3,21 @@ import { useSearchParams } from 'react-router-dom';
 import { api } from '../api/client';
 import PlaceCard from '../components/PlaceCard';
 
-const cities = [
-  { value: '', label: 'All Cities' },
-  { value: 'BUTWAL', label: 'Butwal' },
-  { value: 'BHAIRAHWA', label: 'Bhairahawa' },
-];
-
 export default function Places() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const city = searchParams.get('city') || '';
+  const city = (searchParams.get('city') || '').toLowerCase();
   const category = searchParams.get('category') || '';
   const urlSearch = searchParams.get('search') || '';
 
   const [search, setSearch] = useState(urlSearch);
   const [places, setPlaces] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     api.getCategories().then((data) => setCategories(data.categories || [])).catch(() => {});
+    api.getCities().then((data) => setCities(data.cities || [])).catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -78,14 +74,21 @@ export default function Places() {
           </div>
 
           <div className="filter-group">
+            <button
+              type="button"
+              className={`filter-btn ${city === '' ? 'active' : ''}`}
+              onClick={() => updateParam('city', '')}
+            >
+              All Cities
+            </button>
             {cities.map((item) => (
               <button
-                key={item.value || 'all-cities'}
+                key={item.id}
                 type="button"
-                className={`filter-btn ${city === item.value ? 'active' : ''}`}
-                onClick={() => updateParam('city', item.value)}
+                className={`filter-btn ${city === item.slug ? 'active' : ''}`}
+                onClick={() => updateParam('city', item.slug)}
               >
-                {item.label}
+                {item.name}
               </button>
             ))}
           </div>

@@ -3,9 +3,23 @@ import { api } from '../api/client';
 
 const STORAGE_KEY = 'cityverse_auth';
 
+const ADMIN_BYPASS =
+  import.meta.env.DEV && import.meta.env.VITE_ADMIN_BYPASS === 'true';
+
+const BYPASS_AUTH = {
+  token: 'local-admin-bypass',
+  user: {
+    id: 0,
+    name: 'Local Admin',
+    email: 'local@cityverse.com',
+    role: 'ADMIN',
+  },
+};
+
 const AuthContext = createContext(null);
 
 function readStoredAuth() {
+  if (ADMIN_BYPASS) return BYPASS_AUTH;
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     return raw ? JSON.parse(raw) : null;
@@ -27,12 +41,13 @@ export function AuthProvider({ children }) {
   }, []);
 
   const logout = useCallback(() => {
+    if (ADMIN_BYPASS) return;
     localStorage.removeItem(STORAGE_KEY);
     setAuth(null);
   }, []);
 
   useEffect(() => {
-    if (!auth?.token) return;
+    if (ADMIN_BYPASS || !auth?.token) return;
     setLoading(true);
     api
       .me(auth.token)

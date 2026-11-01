@@ -3,8 +3,6 @@ const prisma = require('../config/prisma');
 const HttpError = require('../utils/HttpError');
 const slugify = require('../utils/slugify');
 
-const cityEnum = z.enum(['BUTWAL', 'BHAIRAHWA']);
-
 const placeSchema = z.object({
   title: z.string().min(2).max(160),
   slug: z.string().min(2).max(180).optional(),
@@ -13,7 +11,7 @@ const placeSchema = z.object({
   bestTime: z.string().max(120).optional().nullable(),
   gettingThere: z.string().max(2000).optional().nullable(),
   travelTips: z.string().max(2000).optional().nullable(),
-  city: cityEnum,
+  cityId: z.coerce.number().int().positive(),
   address: z.string().max(255).optional().nullable(),
   distanceKm: z.coerce.number().min(0).optional(),
   rating: z.coerce.number().min(0).max(5).optional(),
@@ -43,8 +41,7 @@ function buildWhere(query, includeUnpublished) {
   if (!includeUnpublished) where.isPublished = true;
 
   if (query.city) {
-    const city = String(query.city).toUpperCase();
-    if (['BUTWAL', 'BHAIRAHWA'].includes(city)) where.city = city;
+    where.city = { slug: String(query.city).toLowerCase() };
   }
 
   if (query.category) {
@@ -61,6 +58,7 @@ function buildWhere(query, includeUnpublished) {
       { title: { contains: search } },
       { description: { contains: search } },
       { address: { contains: search } },
+      { city: { name: { contains: search } } },
     ];
   }
 
@@ -71,7 +69,7 @@ async function listPublic(req, res, next) {
   try {
     const places = await prisma.place.findMany({
       where: buildWhere(req.query, false),
-      include: { category: true, images: true },
+      include: { category: true, city: true, images: true },
       orderBy: [{ isFeatured: 'desc' }, { createdAt: 'desc' }],
     });
     return res.json({ places });
@@ -84,7 +82,7 @@ async function getBySlug(req, res, next) {
   try {
     const place = await prisma.place.findFirst({
       where: { slug: req.params.slug, isPublished: true },
-      include: { category: true, images: true },
+      include: { category: true, city: true, images: true },
     });
     if (!place) {
       throw new HttpError(404, 'Place not found');
@@ -99,7 +97,7 @@ async function listAdmin(req, res, next) {
   try {
     const places = await prisma.place.findMany({
       where: buildWhere(req.query, true),
-      include: { category: true, images: true },
+      include: { category: true, city: true, images: true },
       orderBy: { createdAt: 'desc' },
     });
     return res.json({ places });
@@ -112,7 +110,7 @@ async function getAdminById(req, res, next) {
   try {
     const place = await prisma.place.findUnique({
       where: { id: Number(req.params.id) },
-      include: { category: true, images: true },
+      include: { category: true, city: true, images: true },
     });
     if (!place) {
       throw new HttpError(404, 'Place not found');
@@ -130,6 +128,10 @@ async function create(req, res, next) {
     if (!category) {
       throw new HttpError(422, 'Selected category does not exist');
     }
+    const city = await prisma.city.findUnique({ where: { id: data.cityId } });
+    if (!city) {
+      throw new HttpError(422, 'Selected city does not exist');
+    }
 
     const slug = await uniqueSlug(data.slug ? slugify(data.slug) : slugify(data.title));
     const place = await prisma.place.create({
@@ -140,7 +142,7 @@ async function create(req, res, next) {
           ? { create: images.map((url) => ({ url, alt: data.title })) }
           : undefined,
       },
-      include: { category: true, images: true },
+      include: { category: true, city: true, images: true },
     });
     return res.status(201).json({ place });
   } catch (error) {
@@ -163,6 +165,12 @@ async function update(req, res, next) {
         throw new HttpError(422, 'Selected category does not exist');
       }
     }
+    if (data.cityId) {
+      const city = await prisma.city.findUnique({ where: { id: data.cityId } });
+      if (!city) {
+        throw new HttpError(422, 'Selected city does not exist');
+      }
+    }
 
     const slugSource = data.slug || data.title;
     const slug = slugSource
@@ -182,7 +190,7 @@ async function update(req, res, next) {
           ? { create: images.map((url) => ({ url, alt: data.title || existing.title })) }
           : undefined,
       },
-      include: { category: true, images: true },
+      include: { category: true, city: true, images: true },
     });
     return res.json({ place });
   } catch (error) {
