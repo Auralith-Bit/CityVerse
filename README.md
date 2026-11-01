@@ -249,7 +249,6 @@ All tables are visible and editable in MySQL Workbench.
 ## Notes
 
 - Only admins can access `/admin`. Public users cannot create accounts.
-- Local preview without admin login: set `VITE_ADMIN_BYPASS=true` in `client/.env.local` and `ADMIN_BYPASS=true` in `server/.env`. This is ignored in production builds (`NODE_ENV=production` / Vite `PROD`); restart both servers after changing it.
 - Images may be either static paths (`/images/...`) or uploaded files (`/uploads/...`).
 - Seeded place photos live in `client/public/images/places/`; attribution and licenses are listed in `client/public/images/places/CREDITS.md`.
 - `README2.md` is kept out of version control via `.gitignore`.

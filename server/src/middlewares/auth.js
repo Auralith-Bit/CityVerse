@@ -1,22 +1,7 @@
 const jwt = require('jsonwebtoken');
 const HttpError = require('../utils/HttpError');
 
-const ADMIN_BYPASS =
-  process.env.ADMIN_BYPASS === 'true' && process.env.NODE_ENV !== 'production';
-
-const BYPASS_USER = {
-  id: 0,
-  name: 'Local Admin',
-  email: 'local@cityverse.com',
-  role: 'ADMIN',
-};
-
 function authenticate(req, res, next) {
-  if (ADMIN_BYPASS) {
-    req.user = BYPASS_USER;
-    return next();
-  }
-
   const header = req.headers.authorization || '';
   const [scheme, token] = header.split(' ');
 

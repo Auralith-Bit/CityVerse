@@ -13,10 +13,6 @@ const { notFound, errorHandler } = require('./middlewares/errorHandler');
 const app = express();
 const port = process.env.PORT || 5000;
 
-if (process.env.ADMIN_BYPASS === 'true' && process.env.NODE_ENV !== 'production') {
-  console.warn('WARNING: ADMIN_BYPASS is enabled. Admin API routes are unauthenticated.');
-}
-
 const allowedOrigins = (process.env.CLIENT_ORIGIN || 'http://localhost:5173')
   .split(',')
   .map((origin) => origin.trim());
