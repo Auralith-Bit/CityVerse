@@ -94,7 +94,6 @@
   color: rgba(255, 255, 255, 0.85);
   border-radius: var(--radius-md);
   transition: all var(--transition-fast);
-  position: relative;
 }
 
 .header.scrolled .nav-link {
@@ -116,24 +115,6 @@
 [data-theme="dark"] .header.scrolled .nav-link:hover,
 [data-theme="dark"] .header.scrolled .nav-link.active {
   background: rgba(15, 155, 142, 0.15);
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--primary-400);
-  transition: all var(--transition-base);
-  transform: translateX(-50%);
-  border-radius: var(--radius-full);
-}
-
-.nav-link.active::after,
-.nav-link:hover::after {
-  width: 60%;
 }
 
 /* Nav Actions */
