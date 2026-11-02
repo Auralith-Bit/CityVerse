@@ -73,7 +73,7 @@ export default function Places() {
             />
           </div>
 
-          <div className="filter-group">
+          <div className="filter-reset-row">
             <button
               type="button"
               className={`filter-btn ${city === '' ? 'active' : ''}`}
@@ -81,6 +81,16 @@ export default function Places() {
             >
               All Cities
             </button>
+            <button
+              type="button"
+              className={`filter-btn ${category === '' ? 'active' : ''}`}
+              onClick={() => updateParam('category', '')}
+            >
+              All Categories
+            </button>
+          </div>
+
+          <div className="filter-group">
             {cities.map((item) => (
               <button
                 key={item.id}
@@ -94,13 +104,6 @@ export default function Places() {
           </div>
 
           <div className="filter-group">
-            <button
-              type="button"
-              className={`filter-btn ${category === '' ? 'active' : ''}`}
-              onClick={() => updateParam('category', '')}
-            >
-              All Categories
-            </button>
             {categories.map((item) => (
               <button
                 key={item.id}
