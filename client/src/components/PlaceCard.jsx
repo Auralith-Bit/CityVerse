@@ -18,31 +18,31 @@ function Stars({ rating }) {
 
 export default function PlaceCard({ place }) {
   return (
-    <div className="place-card reveal">
-      <div className="place-card-image">
-        <img src={resolveImage(place.coverImage) || '/images/places/butwal-city-center-1.jpg'} alt={place.title} />
-        <div className="place-card-overlay" />
-        <span className="place-card-category">{place.category?.name || 'Attraction'}</span>
-        <span className="place-card-distance">
-          <i className="bx bx-map-pin" /> {Number(place.distanceKm || 0)} km
-        </span>
-        <span className="place-card-city">
-          <i className="bx bx-buildings" /> {place.city?.name || 'Nepal'}
-        </span>
-      </div>
-      <div className="place-card-body">
-        <h3 className="place-card-title">{place.title}</h3>
-        <p className="place-card-desc">{place.description}</p>
-        <div className="place-card-meta">
-          <div className="place-card-rating">
-            <Stars rating={place.rating} />
-            <span>({Number(place.reviewCount || 0).toLocaleString()} reviews)</span>
+    <Link to={`/places/${place.slug}`}>
+      <div className="place-card reveal">
+        <div className="place-card-image">
+          <img src={resolveImage(place.coverImage) || '/images/places/butwal-city-center-1.jpg'} alt={place.title} />
+          <div className="place-card-overlay" />
+          <span className="place-card-category">{place.category?.name || 'Attraction'}</span>
+          <span className="place-card-distance">
+            <i className="bx bx-map-pin" /> {Number(place.distanceKm || 0)} km
+          </span>
+          <span className="place-card-city">
+            <i className="bx bx-buildings" /> {place.city?.name || 'Nepal'}
+          </span>
+        </div>
+        <div className="place-card-body">
+          <h3 className="place-card-title">{place.title}</h3>
+          <p className="place-card-desc">{place.description}</p>
+          <div className="place-card-meta">
+            <div className="place-card-rating">
+              <Stars rating={place.rating} />
+              <span>({Number(place.reviewCount || 0).toLocaleString()} reviews)</span>
+            </div>
+            {/* View Details link removed — card itself is now the link */}
           </div>
-          <Link to={`/places/${place.slug}`} className="place-card-action">
-            View Details <i className="bx bx-right-arrow-alt" />
-          </Link>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
