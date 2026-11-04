@@ -33,6 +33,10 @@ async function request(path, { method = 'GET', body, token, isForm = false } = {
 
 export const api = {
   login: (credentials) => request('/api/auth/login', { method: 'POST', body: credentials }),
+  googleLogin: (credential) =>
+    request('/api/auth/google', { method: 'POST', body: { credential } }),
+  appleLogin: (idToken, name) =>
+    request('/api/auth/apple', { method: 'POST', body: { idToken, name } }),
   me: (token) => request('/api/auth/me', { token }),
 
   getPlaces: (params = {}) => {

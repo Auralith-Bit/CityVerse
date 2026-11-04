@@ -23,6 +23,8 @@ It uses a React (Vite) frontend, a Node.js + Express REST API, and MySQL (manage
 ## Features
 
 - Public attraction browsing with filters (city, category, search)
+- Attraction details require sign-in — visitors can browse, but opening a place asks them to log in first
+- Sign in with Google or Apple (OAuth); admin keeps email/password login
 - Rich attraction pages: photo gallery with lightbox, highlights, best time to visit, getting there, travel tips, related places
 - Home page with city spotlight, featured attractions, transport info and testimonials
 - About, Contact and Nightlife pages
@@ -202,8 +204,12 @@ Base URL: `http://localhost:5000`
 
 | Method | Endpoint | Access | Description |
 | :-- | :-- | :-- | :-- |
-| POST | `/api/auth/login` | Public | `{ email, password }` → `{ user, token }` |
-| GET | `/api/auth/me` | Admin | Current user profile |
+| POST | `/api/auth/login` | Public | `{ email, password }` → `{ user, token }` (admin/staff) |
+| POST | `/api/auth/google` | Public | `{ credential }` (Google ID token) → `{ user, token }` |
+| POST | `/api/auth/apple` | Public | `{ idToken, name? }` (Apple ID token) → `{ user, token }` |
+| GET | `/api/auth/me` | Any signed-in user | Current user profile |
+
+OAuth providers are optional. Set `GOOGLE_CLIENT_ID` / `APPLE_CLIENT_ID` on the server and the matching `VITE_GOOGLE_CLIENT_ID` / `VITE_APPLE_CLIENT_ID` on the client to enable the buttons on `/login`. Google: create an OAuth 2.0 Web client in Google Cloud Console and add `http://localhost:5173` (and your production origin) as an Authorized JavaScript origin. Apple: register a Services ID with Sign in with Apple enabled and the return URL `https://<your-domain>/login`; Apple sign-in requires HTTPS and cannot be tested from `localhost`.
 
 ### Public
 
@@ -236,7 +242,7 @@ Base URL: `http://localhost:5000`
 
 ## Database Models
 
-- **users** — id, name, email (unique), password (bcrypt), role (`ADMIN` | `EDITOR`)
+- **users** — id, name, email (unique), password (bcrypt, optional for OAuth accounts), role (`ADMIN` | `EDITOR` | `USER`), googleId, appleId, avatarUrl
 - **categories** — id, name, slug (unique), description
 - **cities** — id, name, slug (unique), description
 - **places** — id, title, slug, description, highlights (JSON), bestTime, gettingThere, travelTips, cityId, address, distanceKm, rating, reviewCount, coverImage, isFeatured, isPublished, categoryId

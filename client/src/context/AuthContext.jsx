@@ -26,6 +26,13 @@ export function AuthProvider({ children }) {
     return data.user;
   }, []);
 
+  const loginWithProvider = useCallback((data) => {
+    const next = { token: data.token, user: data.user };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    setAuth(next);
+    return data.user;
+  }, []);
+
   const logout = useCallback(() => {
     localStorage.removeItem(STORAGE_KEY);
     setAuth(null);
@@ -54,9 +61,10 @@ export function AuthProvider({ children }) {
       isAdmin: auth?.user?.role === 'ADMIN',
       loading,
       login,
+      loginWithProvider,
       logout,
     }),
-    [auth, loading, login, logout]
+    [auth, loading, login, loginWithProvider, logout]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

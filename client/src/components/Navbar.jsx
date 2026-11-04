@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import { useAuth } from '../context/AuthContext';
 
 const links = [
   { to: '/', label: 'Home', end: true },
@@ -10,8 +11,18 @@ const links = [
   { to: '/contact', label: 'Contact' },
 ];
 
+function initials(name) {
+  return (name || '')
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0].toUpperCase())
+    .join('');
+}
+
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
+  const { user, isAuthenticated, logout } = useAuth();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -51,6 +62,25 @@ export default function Navbar() {
         </div>
 
         <div className="nav-actions">
+          {!isAuthenticated ? (
+            <Link to="/login" className="nav-login-btn">
+              Sign in
+            </Link>
+          ) : (
+            <div className="nav-user">
+              <div className="nav-user-avatar">{initials(user?.name) || 'U'}</div>
+              <span className="nav-user-name">{user?.name}</span>
+              <button
+                type="button"
+                className="nav-user-logout"
+                onClick={logout}
+                aria-label="Log out"
+              >
+                <i className="bx bx-log-out" />
+              </button>
+            </div>
+          )}
+
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle dark mode">
             <i className={theme === 'dark' ? 'bx bx-sun' : 'bx bx-moon'} />
           </button>

@@ -9,6 +9,7 @@ import PlaceDetail from './pages/PlaceDetail';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Nightlife from './pages/Nightlife';
+import Login from './pages/Login';
 import AdminLogin from './pages/admin/AdminLogin';
 import Dashboard from './pages/admin/Dashboard';
 import ManagePlaces from './pages/admin/ManagePlaces';
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="nightlife" element={<Nightlife />} />
+        <Route path="login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Route>
 

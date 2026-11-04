@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { api, resolveImage } from '../api/client';
+import { useAuth } from '../context/AuthContext';
 import PlaceCard from '../components/PlaceCard';
 
 export default function PlaceDetail() {
   const { slug } = useParams();
+  const { isAuthenticated, loading: authLoading } = useAuth();
   const [place, setPlace] = useState(null);
   const [related, setRelated] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -47,6 +49,21 @@ export default function PlaceDetail() {
     const urls = [place.coverImage, ...(place.images || []).map((image) => image.url)].filter(Boolean);
     return [...new Set(urls)];
   }, [place]);
+
+  if (authLoading) {
+    return (
+      <section className="place-detail">
+        <div className="container loading-state">
+          <i className="bx bx-loader-alt bx-spin" />
+          Checking your session…
+        </div>
+      </section>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" state={{ from: `/places/${slug}` }} replace />;
+  }
 
   if (loading) {
     return (

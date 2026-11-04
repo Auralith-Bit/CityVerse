@@ -86,6 +86,172 @@
   margin-bottom: var(--space-4);
 }
 
+/* ---------- LOGIN PAGE ---------- */
+.login-page {
+  min-height: 100vh;
+  padding: calc(var(--header-height) + var(--space-12)) 0 var(--space-16);
+  background: var(--bg-secondary);
+}
+
+.login-card {
+  max-width: 460px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10) var(--space-8);
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.login-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-400) 0%, var(--primary-600) 100%);
+  color: #fff;
+  font-size: 1.8rem;
+}
+
+.login-title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.login-sub {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+.login-provider-area {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.login-google-slot {
+  display: flex;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.login-google-btn {
+  width: 100%;
+  max-width: 320px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: #ffffff;
+  color: #1f1f1f;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  font-family: var(--font-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.login-google-btn:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+}
+
+.login-google-btn svg {
+  flex-shrink: 0;
+}
+
+.login-apple-btn {
+  width: 100%;
+  max-width: 320px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  font-family: var(--font-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.login-apple-btn:hover {
+  background: #1c1c1e;
+  transform: translateY(-1px);
+}
+
+.login-apple-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-apple-btn i {
+  font-size: 1.2rem;
+}
+
+.login-error {
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  color: #dc2626;
+  font-size: var(--font-size-sm);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+}
+
+.login-note {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  line-height: 1.6;
+}
+
+.login-note code {
+  background: var(--bg-secondary);
+  padding: 0.1rem 0.35rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+}
+
+.login-note a {
+  color: var(--primary-500);
+  font-weight: 600;
+}
+
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--text-tertiary);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: var(--space-6) 0;
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--neutral-300);
+}
+
 .empty-state,
 .loading-state {
   grid-column: 1 / -1;
