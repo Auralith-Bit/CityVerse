@@ -27,7 +27,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   const loginAsGuest = useCallback(() => {
-    const guestUser = { id: 'guest', name: 'Guest', email: 'guest@cityverse.com', role: 'USER' };
+    const guestUser = { id: 'guest', name: 'Guest', email: 'guest@cityverse.com', role: 'USER', isGuest: true };
     const next = { token: 'guest-token', user: guestUser };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
     setAuth(next);
@@ -47,7 +47,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    if (!auth?.token) return;
+    if (!auth?.token || auth?.user?.isGuest) return;
     setLoading(true);
     api
       .me(auth.token)
