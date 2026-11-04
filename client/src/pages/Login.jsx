@@ -185,7 +185,7 @@ export default function Login() {
           <div className="login-divider">or</div>
 
           <p className="login-note">
-            Staff member? <Link to="/admin/login">Sign in with your admin account</Link>
+            Create a free account to view attraction details, photos and travel tips across Nepal.
           </p>
         </div>
       </div>
