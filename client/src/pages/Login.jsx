@@ -180,6 +180,18 @@ export default function Login() {
             </button>
           </div>
 
+          <button
+            type="button"
+            className="login-guest-btn"
+            onClick={() => {
+              const user = loginAsGuest();
+              navigate(from, { replace: true });
+            }}
+            disabled={busy}
+          >
+            Continue as Guest
+          </button>
+
           {busy && <p className="login-note">Signing you in…</p>}
 
           <div className="login-divider">or</div>

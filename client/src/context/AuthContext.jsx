@@ -26,6 +26,14 @@ export function AuthProvider({ children }) {
     return data.user;
   }, []);
 
+  const loginAsGuest = useCallback(() => {
+    const guestUser = { id: 'guest', name: 'Guest', email: 'guest@cityverse.com', role: 'USER' };
+    const next = { token: 'guest-token', user: guestUser };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    setAuth(next);
+    return guestUser;
+  }, []);
+
   const loginWithProvider = useCallback((data) => {
     const next = { token: data.token, user: data.user };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
@@ -62,9 +70,10 @@ export function AuthProvider({ children }) {
       loading,
       login,
       loginWithProvider,
+      loginAsGuest,
       logout,
     }),
-    [auth, loading, login, loginWithProvider, logout]
+    [auth, loading, login, loginWithProvider, loginAsGuest, logout]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

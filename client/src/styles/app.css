@@ -205,6 +205,35 @@
   font-size: 1.2rem;
 }
 
+.login-guest-btn {
+  width: 100%;
+  max-width: 320px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #6b7280;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  font-family: var(--font-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.login-guest-btn:hover {
+  background: #4b5563;
+  transform: translateY(-1px);
+}
+
+.login-guest-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .login-error {
   background: rgba(220, 38, 38, 0.08);
   border: 1px solid rgba(220, 38, 38, 0.3);
