@@ -22,7 +22,7 @@ function loadScript(src) {
 }
 
 export default function Login() {
-  const { isAuthenticated, loading, loginWithProvider } = useAuth();
+  const { isAuthenticated, loading, loginWithProvider, loginAsGuest } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from || '/';
