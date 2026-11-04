@@ -73,34 +73,20 @@ export default function Places() {
             />
           </div>
 
-          <div className="filter-reset-row">
-            <button
-              type="button"
-              className={`filter-btn ${city === '' ? 'active' : ''}`}
-              onClick={() => updateParam('city', '')}
-            >
-              All Cities
-            </button>
-            <button
-              type="button"
-              className={`filter-btn ${category === '' ? 'active' : ''}`}
-              onClick={() => updateParam('category', '')}
-            >
-              All Categories
-            </button>
-          </div>
-
           <div className="filter-group">
-            {cities.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                className={`filter-btn ${city === item.slug ? 'active' : ''}`}
-                onClick={() => updateParam('city', item.slug)}
-              >
-                {item.name}
-              </button>
-            ))}
+            <select
+              className="filter-select"
+              value={city}
+              onChange={(event) => updateParam('city', event.target.value)}
+              aria-label="Filter by city"
+            >
+              <option value="">All Cities</option>
+              {cities.map((item) => (
+                <option key={item.id} value={item.slug}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="filter-group">

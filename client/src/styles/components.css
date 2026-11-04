@@ -84,7 +84,8 @@
 }
 
 .hero-title {
-  font-size: 90px font-weight: 600;
+  font-size: clamp(2.6rem, 7vw, 90px);
+  font-weight: 600;
   color: #ffffff;
   line-height: 1.15;
   margin-bottom: var(--space-4);
@@ -315,6 +316,51 @@
   color: white;
   border-color: var(--primary-500);
   box-shadow: var(--shadow-glow);
+}
+
+.filter-select {
+  padding: var(--space-2) var(--space-6);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  font-family: var(--font-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.6rem;
+  min-width: 180px;
+}
+
+.filter-select:hover {
+  color: var(--primary-500);
+  border-color: var(--primary-200);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px rgba(15, 155, 142, 0.15);
+}
+
+[data-theme="dark"] .filter-select {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .filter-select:hover {
+  color: var(--primary-400);
+  border-color: var(--primary-700);
+}
+
+.filter-select option {
+  background: var(--bg-card);
+  color: var(--text-primary);
 }
 
 .places-grid {
