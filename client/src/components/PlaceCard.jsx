@@ -39,7 +39,9 @@ export default function PlaceCard({ place }) {
               <Stars rating={place.rating} />
               <span>({Number(place.reviewCount || 0).toLocaleString()} reviews)</span>
             </div>
-            {/* View Details link removed — card itself is now the link */}
+            <Link to={`/places/${place.slug}`} className="place-card-action" onClick={e => e.stopPropagation()}>
+              View Details <i className="bx bx-right-arrow-alt" />
+            </Link>
           </div>
         </div>
       </div>
